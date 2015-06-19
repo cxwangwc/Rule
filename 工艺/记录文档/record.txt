@@ -1,0 +1,434 @@
+MFC类基本层次结构
+　　其中，CObject类是MFC提供的绝大多数类的基类。该类完成动态空间的分配与回收，支持一般的诊断、出错信息处理和文档序列化等。
+　　CCmdTarget类主要负责将系统事件(消息)和窗口事件(消息)发送给响应这些事件的对象，完成消息发送、等待和派遣(调度)等工作，实现应用程序的对象之间协调运行。
+　　CWinApp类是应用程序的主线程类，它是从CWinThread类派生而来。CWinThread类用来完成对线程的控制，包括线程的创建、运行、终止和挂起等。
+　　CDocument类是文档类，包含了应用程序在运行期间所用到的数据。
+　　CWnd类是一个通用的窗口类，用来提供Windows 中的所有通用特性。
+　　CView 是用于让用户通过窗口来访问文档以及负责文档内容的显示。
+　　CFrameWnd 类是从 CWnd 继承来的，并实现了标准的框架应用程序。
+　　CDialog 类用来控制对话框窗口。
+　　CMDIFrameWnd和CMDIChildWnd类分别用来多文档应用程序的主框架窗口和文档子窗口的显示和管理。
+CMiniFrameWnd类是一种简化的框架窗口，它没有最大化和最小化窗口按钮，也没有窗口系统菜单，一般很少用到它。
+
+
+对象创建函数
+	HRESULT_stdcall CoCreateInstance
+{
+	const CLSID& clsid,
+	Iunkown * pIUnknownOuter,
+	DWORD dwClsContext,
+	const IID& iid,
+	void ** ppv   
+};	
+clsid                        :待创建构件的标识；
+pIUnknownOuter :用于聚合；
+dwClsContext       :限定所创建构件的上下文；
+iid                           :构件上待使用接口的标识；
+ppv                         :所返回接口的指针。
+
+
+	注册表：
+	可用作客户程序、构建程序和COM库交换有关COM对象信息和接口的场所、
+	
+	1、类工厂是能够创建其它COM对象的特殊COM对象，类工厂支持一个特殊的接口IClassFactory，为例化CoClass构件类提供了一种标准机制
+	IClassFactory : public IUnknown 
+	{
+		//生成COM对象并返回所请求接口的指针
+		virtual /* [local] */ HRESULT STDMETHODCALLTYPE CreateInstance( 
+            /* [unique][in] */ IUnknown *pUnkOuter,
+            /* [in] */ REFIID riid,
+            /* [iid_is][out] */ void **ppvObject) = 0;
+			
+        //负责在内存中保持COM构件
+        virtual /* [local] */ HRESULT STDMETHODCALLTYPE LockServer( 
+            /* [in] */ BOOL fLock) = 0;
+	};
+	
+	2、
+	/*具有四个输入参数和一个输出参数：第一个参数表示待创建组件的CLSID，
+	第三个参数表示组件执行上下文，第四个参数表示待使用接口的IID，输出代表接口指针*/
+	__checkReturn WINOLEAPI CoCreateInstance(__in     REFCLSID rclsid, 
+                           __in_opt LPUNKNOWN pUnkOuter,
+                           __in     DWORD dwClsContext, 
+                           __in     REFIID riid, 
+                           __deref_out LPVOID FAR* ppv);
+	无法为组件的创建加上限制条件；用该函数建立组件后，无法控制组件的装载位置或无法检查客户是否有权限创建该组件，CoCreateInstances函数的灵活性不足
+	有必要使用一个专门用于创建所需组件的组件：类厂
+	
+	3、类厂 (Class Factory)
+	如果使用类厂，CoCreateInstance实际上未直接创建COM构件,而是创建了一个被称为类厂的构件，类厂构件的唯一功能是创建其他构件
+	客户可以通过类厂所支持的接口来对类厂创建构件的过程加以控制
+	CoCreateInstance首先调用CoGetClassObjec获取类厂中的IClassFactory接口的指针
+	然后使用返回的指针调用IClassFactory::CreateInstance完成新组件的创建
+
+	IClassFactory2增加了许可和权限功能，通过使用该接口，类厂可以保证客户只能获得他能合法访问的组件，并具有此组件的访问授权
+	
+	4、CoGetClassObject的使用	
+	调用组件时，类厂的使用并不是必须的，在下列情况下应直接使用CoGetClassObject
+    而不使用CoCreateInstance
+	(1)如果希望用不同于IClassFactory的某个创建接口来创建构件：
+             例如 IClassFactory2
+	(2)如果希望创建同一构件的多个实例
+
+	5、COM服务器
+		是指包含一个或多个COM对象类和相应的类工厂，能向客户提供服务的一个程序（EXE）或库（DLL）
+
+		1）（客户机）客户调用 CoGetClassObject
+		2）（COM库）COM定位所请求的类对象
+		3）（系统注册表）构建被启动 （类对象 -> 对象）
+		4）类对象创建成功后将IClassFactory接口指针经COM库返回给客户机
+		5）客户调用IClassFactory创建实例
+		6）对象被创建
+		7）接口将指针返回给客户机
+
+	6、包含和聚合
+		组合和聚合是有很大区别的，这个区别不是在形式上，而是在本质上：
+		比如A类中包含B类的一个引用b，当A类的一个对象消亡时，b这个引用所指向的对象也同时消亡（没有任何一个引用指向它，成了垃圾对象），
+	这种情况叫做组合，反之b所指向的对象还会有另外的引用指向它，这种情况叫聚合。
+		在实际写代码时组合方式一般会这样写：
+		A类的构造方法里创建B类的对象，也就是说，当A类的一个对象产生时，B类的对象随之产生，当A类的这个对象消亡时，它所包含的B类的对象也随之消亡。
+		聚合方式则是这样：
+		A类的对象在创建时不会立即创建B类的对象，而是等待一个外界的对象传给它
+		传给它的这个对象不是A类创建的。
+	
+	7、包含和聚合的使用
+		1）包含的复用性建立在客户/服务器模式上，而聚合的复用性需要内部构件提供支持
+		2）复用方式的选择：
+			a.当内部构件提供的接口完全满足要求时，使用聚合合适
+			b.当内部构件提供的接口与需求类似时，使用包含合适
+		3）在一个对象中可以同时使用两种复用方式
+
+	8、COM的动态激活机制-自动化
+		1）自动化是允许高级语言使用构件的COM应用技术，自动化的核心是IDispatch接口，自动化对象就是实现了IDispatch接口的COM对象
+		2）IDispatch接口是自动化对象必须实现的接口, IDispatch在IUnkown接口的基础上增加了如下操作
+		3）GetIDsOfNames 操作负责返回操作或属性及其参数名字的分发标识符（分发ID，即DISPID：用于管理属性和操作）
+		4）GetTypeInfo                处理对象类型信息
+		5）GetTypeInfoCount      处理对象类型信息
+		6）Invoke  是IDispatch的核心操作，根据分发ID执行相应函数
+
+	9、分布构件对象模型DCOM
+		DCOM是COM的进一步扩展，DCOM用网络协议来代替本地进程之间的通信，并针对分布环境提供了一些新的特性，例如：位置透明、网络安全性、跨平台调用等
+		DCOM的分布特性依靠远程过程调用实现
+
+	10、基于COM组件的开发过程
+		基于COM组件开发过程可简要描述为以下几个过程
+		1）建立COM组件
+			基于ATL编程
+			基于MFC编程（可用于实现自动化组件）
+		2）组件的编译
+		3）组件的注册
+		4）编写客户端程序，调用组件的接口函数
+
+2015年5月5号
+		PyImport_ImportModule : 调用python叫脚本之后，若脚本错误，则返回NULL
+		
+		
+		各种关于文件的操作在程序设计中是十分常见，如果能对其各种操作都了如指掌，就可以根据实际情况找到最佳的解决方案，从而在较短的时间内编写出高效的代码，因而熟练的掌握文件操作是十分重要的。本文将对Visual C++中有关文件操作进行全面的介绍，并对在文件操作中经常遇到的一些疑难问题进行详细的分析。
+　　1．文件的查找
+　　当对一个文件操作时，如果不知道该文件是否存在，就要首先进行查找。MFC中有一个专门用来进行文件查找的类CFileFind，使用它可以方便快捷地进行文件的查找。下面这段代码演示了这个类的最基本使用方法。
+　　CString strFileTitle;
+　　CFileFind finder;
+　　BOOL bWorking = finder.FindFile("C:\windows\sysbkup\*.cab");
+　　while(bWorking)
+　　{
+　　bWorking=finder.FindNextFile();
+　　strFileTitle=finder.GetFileTitle();
+　　}
+　　2．文件的打开/保存对话框
+　　让用户选择文件进行打开和存储操作时，就要用到文件打开/保存对话框。MFC的类CFileDialog用于实现这种功能。使用CFileDialog声明一个对象时，第一个BOOL型参数用于指定文件的打开或保存，当为TRUE时将构造一个文件打开对话框，为FALSE时构造一个文件保存对话框。
+　　在构造CFileDialog对象时，如果在参数中指定了OFN_ALLOWMULTISELECT风格，则在此对话框中可以进行多选操作。此时要重点注意为此CFileDialog对象的m_ofn.lpstrFile分配一块内存，用于存储多选操作所返回的所有文件路径名，如果不进行分配或分配的内存过小就会导致操作失败。下面这段程序演示了文件打开对话框的使用方法。
+　　CFileDialog mFileDlg(TRUE,NULL,NULL,
+　　OFN_HIDEREADONLY|OFN_OVERWRITEPROMPT|OFN_ALLOWMULTISELECT,
+　　"All Files (*.*)|*.*||",AfxGetMainWnd());
+　　CString str(" ",10000);
+　　mFileDlg.m_ofn.lpstrFile=str.GetBuffer(10000);
+　　str.ReleaseBuffer();
+　　POSITION mPos=mFileDlg.GetStartPosition();
+　　CString pathName(" ",128);
+　　CFileStatus status;
+　　while(mPos!=NULL)
+　　{
+　　pathName=mFileDlg.GetNextPathName(mPos);
+　　CFile::GetStatus( pathName, status );
+　　}
+　　3．文件的读写
+　　文件的读写非常重要，下面将重点进行介绍。文件读写的最普通的方法是直接使用CFile进行，如文件的读写可以使用下面的方法：
+　　//对文件进行读操作
+　　char sRead[2];
+　　CFile mFile(_T("user.txt"),CFile::modeRead);
+　　if(mFile.GetLength()<2)
+　　return;
+　　mFile.Read(sRead,2);
+　　mFile.Close();
+　　//对文件进行写操作
+　　CFile mFile(_T("user.txt "), CFile::modeWrite|CFile::modeCreate);
+　　mFile.Write(sRead,2);
+　　mFile.Flush();
+　　mFile.Close();
+　　虽然这种方法最为基本，但是它的使用繁琐，而且功能非常简单。我向你推荐的是使用CArchive，它的使用方法简单且功能十分强大。首先还是用CFile声明一个对象，然后用这个对象的指针做参数声明一个CArchive对象，你就可以非常方便地存储各种复杂的数据类型了。它的使用方法见下例。
+　　//对文件进行写操作
+　　CString strTemp;
+　　CFile mFile;
+　　mFile.Open("d:\dd\try.TRY",CFile::modeCreate|CFile::modeNoTruncate|CFile::modeWrite);
+　　CArchive ar(&mFile,CArchive::store);
+　　ar<<　　ar.Close();
+　　mFile.Close();
+　　//对文件进行读操作
+　　CFile mFile;
+　　if(mFile.Open("d:\dd\try.TRY",CFile::modeRead)==0)
+　　return;
+　　CArchive ar(&mFile,CArchive::load);
+　 　ar>>strTemp;
+    　 ar.Close();
+　　mFile.Close();
+　　CArchive的 << 和>> 操作符用于简单数据类型的读写，对于CObject派生类的对象的存取要使用ReadObject()和WriteObject()。使用CArchive的ReadClass()和WriteClass()还可以进行类的读写，如：
+　　//存储CAboutDlg类
+　　ar.WriteClass(RUNTIME_CLASS(CAboutDlg));
+　　//读取CAboutDlg类
+　　CRuntimeClass* mRunClass=ar.ReadClass();
+　　//使用CAboutDlg类
+　　CObject* pObject=mRunClass->CreateObject();
+    　　((CDialog* )pObject)->DoModal();
+　　虽然VC提供的文档/视结构中的文档也可进行这些操作，但是不容易理解、使用和管理，因此虽然很多VC入门的书上花费大量篇幅讲述文档/视结构，但我建议你最好不要使用它的文档。关于如何进行文档/视的分离有很多书介绍，包括非常著名的《Visual C++ 技术内幕》。
+　　如果你要进行的文件操作只是简单的读写整行的字符串，我建议你使用CStdioFile，用它来进行此类操作非常方便，如下例。
+　　CStdioFile mFile;
+　　CFileException mExcept;
+　　mFile.Open( "d:\temp\aa.bat", CFile::modeWrite, &mExcept);
+　　CString string="I am a string.";
+　　mFile.WriteString(string);
+　　mFile.Close();
+ 
+追加到原有txt文件尾
+    mFile.Open(temptxt,CFile::modeCreate|CFile::modeWrite|CFile::modeNoTruncate);
+ if(mFile==NULL)
+  return false;
+ mFile.SeekToEnd();
+ mFile.WriteString(s);
+ 
+ file.Close();
+　4．临时文件的使用
+
+　　正规软件经常用到临时文件，你经常可以会看到C:WindowsTemp目录下有大量的扩展名为tmp的文件，这些就是程序运行是建立的临时文件。临时文件的使用方法基本与常规文件一样，只是文件名应该调用函数GetTempFileName()获得。它的第一个参数是建立此临时文件的路径，第二个参数是建立临时文件名的前缀，第四个参数用于得到建立的临时文件名。得到此临时文件名以后，你就可以用它来建立并操作文件了，如：
+　　char szTempPath[_MAX_PATH],szTempfile[_MAX_PATH];
+　　GetTempPath(_MAX_PATH, szTempPath);
+　　GetTempFileName(szTempPath,_T ("my_"),0,szTempfile);
+　　CFile m_tempFile(szTempfile,CFile:: modeCreate|CFile:: modeWrite);
+　　char m_char='a';
+　　m_tempFile.Write(&m_char,2);
+　　m_tempFile.Close();
+　　5．文件的复制、删除等
+　　MFC中没有提供直接进行这些操作的功能，因而要使用SDK。SDK中的文件相关函数常用的有CopyFile()、CreateDirectory()、DeleteFile()、MoveFile()。它们的用法很简单，可参考MSDN。
+
+1,判断文件是否存在
+    access(filename,mode);
+2,对于不同用途又不同的文件操作,其中API函数CreateFile()也是比较有用处理方式,对于巨型文件很合适的其他的楼上的大都说了,不重复了.
+
+[1]显示对话框，取得文件名
+
+CString FilePathName;
+CFileDialog dlg(TRUE);///TRUE为OPEN对话框，FALSE为S***E AS对话框
+if (dlg.DoModal() == IDOK)
+    FilePathName=dlg.GetPathName();
+
+相关信息：CFileDialog 用于取文件名的几个成员函数：
+假如选择的文件是C:WINDOWSTEST.EXE
+则(1)GetPathName();取文件名全称，包括完整路径。取回C:WINDOWSTEST.EXE
+(2)GetFileTitle();取文件全名：TEST.EXE
+(3)GetFileName();取回TEST
+(4)GetFileExt();取扩展名EXE
+
+[2]打开文件
+CFile file("C:HELLO.TXT",CFile::modeRead);//只读方式打开
+//CFile::modeRead可改为 CFile::modeWrite(只写),
+//CFile::modeReadWrite(读写),CFile::modeCreate(新建)
+例子：
+{
+CFile file;
+file.Open("C:HELLO.TXT",CFile::modeCreate|Cfile::modeWrite);
+.
+.
+.
+}
+
+[3]移动文件指针
+file.Seek(100,CFile::begin);///从文件头开始往下移动100字节
+file.Seek(-50,CFile::end);///从文件末尾往上移动50字节
+file.Seek(-30,CFile::current);///从当前位置往上移动30字节
+file.SeekToBegin();///移到文件头
+file.SeekToEnd();///移到文件尾
+
+[4]读写文件
+读文件：
+char buffer[1000];
+file.Read(buffer,1000);
+写文件：
+CString string("自强不息");
+file.Write(string,8);
+
+[5]关闭文件
+file.Close();
+
+		XML 文件读写
+		
+	使用MSXML.DLL读写XML;  
+  
+文件顶部加入  
+  
+#import "msxml3.dll";  
+  
+using namespace MSXML2;  
+  
+//这两句作用是,在程序的文件夹下生成MSXML3.TLH和MSXML3.TLI两个文件;  
+  
+---------------------------------------------------------  
+  
+创建一个XML文件;  
+  
+ ::CoInitialize(NULL);  
+ MSXML2::IXMLDOMDocumentPtr XMLDOC;  
+ MSXML2::IXMLDOMElementPtr XMLROOT;  
+  
+ HRESULT HR = XMLDOC.CreateInstance(_uuidof(MSXML2::DOMDocument30));  
+ if(!SUCCEEDED(HR))  
+ {  
+  MessageBox("faild!!");  
+  return;  
+ }  
+ XMLROOT = XMLDOC->createElement("ROOT");  
+ XMLROOT->setAttribute("ID","12345");  //设置根标签的属性;  
+ XMLDOC->appendChild(XMLROOT);  
+ CString TMP;  
+ MSXML2::IXMLDOMElementPtr XMLNODE;  
+ for(int I=0;I<10;I++)  
+ {  
+  TMP.Format("%d",I);  
+  XMLNODE = XMLDOC->createElement((_bstr_t)("NODE"+TMP));  
+  XMLNODE->put_text((_bstr_t)"NODETEXTS");//设置标签的文本内容;  
+  XMLNODE->setAttribute("ID",(_variant_t)TMP);//设置标签的属性及内容;  
+  XMLNODE->setAttribute("NAME","NODENAME");  
+  XMLROOT->appendChild(XMLNODE);  
+ }  
+ XMLDOC->save("XMLTEST.XML");  
+ XMLNODE.Release();  
+ XMLROOT.Release();  
+ XMLDOC.Release();  
+ ::CoUninitialize();  
+  
+------------------------------------------------------------------  
+  
+读取一个XML;  
+  
+ ::CoInitialize(NULL);  
+ MSXML2::IXMLDOMDocumentPtr XMLDOC;   
+ MSXML2::IXMLDOMElementPtr XMLROOT;  
+ MSXML2::IXMLDOMElementPtr XMLELEMENT;  
+ MSXML2::IXMLDOMNodeListPtr XMLNODES; //某个节点的所以字节点  
+ MSXML2::IXMLDOMNamedNodeMapPtr XMLNODEATTS;//某个节点的所有属性;  
+ MSXML2::IXMLDOMNodePtr XMLNODE;  
+ HRESULT HR = XMLDOC.CreateInstance(_uuidof(MSXML2::DOMDocument30));  
+ if(!SUCCEEDED(HR))  
+ {  
+  MessageBox("faild!!");  
+  return;  
+ }  
+ XMLDOC->load("XMLTEST.XML");  
+ XMLROOT = XMLDOC->GetdocumentElement();//获得根节点;  
+ XMLROOT->get_childNodes(&XMLNODES);//获得根节点的所有子节点;  
+ long XMLNODESNUM,ATTSNUM;  
+ XMLNODES->get_length(&XMLNODESNUM);//获得所有子节点的个数;  
+ CString TMP;  
+ TMP.Format("%d",XMLNODESNUM);  
+ MessageBox(TMP);  
+ for(int I=0;I<XMLNODESNUM;I++)  
+ {  
+  XMLNODES->get_item(I,&XMLNODE);//获得某个子节点;  
+  XMLNODE->get_attributes(&XMLNODEATTS);//获得某个节点的所有属性;  
+  XMLNODEATTS->get_length(&ATTSNUM);//获得所有属性的个数;  
+  for(int J=0;J<ATTSNUM;J++)  
+  {  
+   XMLNODEATTS->get_item(J,&XMLNODE);//获得某个属性;  
+   CString T1 = (char*)(_bstr_t)XMLNODE->nodeName;  
+   CString T2 = (char*)(_bstr_t)XMLNODE->text;  
+   MessageBox(T1+" = "+T2);  
+  }  
+  //MessageBox((_bstr_t)XMLNODE->nodeName+": "+(_bstr_t)XMLNODE->text);  
+ }  
+ return;  
+ //XMLDOC->save("XMLTEST.XML");  
+ XMLNODES.Release();  
+ XMLNODE.Release();  
+ XMLROOT.Release();  
+ XMLDOC.Release();  
+ ::CoUninitialize();  
+  
+---------------------------------------------------------  
+  
+总结:  
+  
+XML文件档类型:MSXML2::IXMLDOMDocumentPtr;  
+  
+单个元素类型:MSXML2::IXMLDOMElementPtr;  
+  
+单个节点类型:MSXML2::IXMLDOMNodePtr;  
+  
+所有子节点类型:MSXML2::IXMLDOMNodeListPtr;  
+  
+所有属性类型:MSXML2::IXMLDOMNamedNodeMapPtr;  
+  
+获得节点个数的方法:get_length();  
+  
+获得所有子节点的方法:get_childNodes();  
+  
+获得指定节点的方法:get_item(索引号,单个节点类型变量);  
+  
+写入单个节点的文本内容方法:put_text((_bstr_t)"内容");  
+  
+获得单个节点的文本内容属性:XMLNODE->text;  
+  
+获得单个属性的内容属性:XMLNODEATT->text;  
+  
+节点名的属性为:XMLNODE->nodeName;  
+  
+---------------------------------------------------------------  
+  
+XML创建文件一般过程:  
+  
+ ::CoInitialize(NULL);  
+  
+HRESULT HR = XMLDOC.CreateInstance(_uuidof(MSXML2::DOMDocument30));  
+ if(!SUCCEEDED(HR))  
+ {  
+  MessageBox("faild!!");  
+  return;  
+ }  
+ XMLROOT = XMLDOC->createElement("ROOT");//创建文件;  
+  
+操作文件.....................  
+  
+ XMLDOC->save("XMLTEST.XML");//保存文件;  
+ XMLNODE.Release();  
+ XMLROOT.Release();  
+ XMLDOC.Release();  
+ ::CoUninitialize();  
+  
+------------------------------------------------------------------------------  
+  
+加载文件过程序:  
+  
+ ::CoInitialize(NULL);  
+ HRESULT HR = XMLDOC.CreateInstance(_uuidof(MSXML2::DOMDocument30));  
+ if(!SUCCEEDED(HR))  
+ {  
+  MessageBox("faild!!");  
+  return;  
+ }  
+ XMLDOC->load("XMLTEST.XML");  
+  
+文件操作.........................  
+  
+ XMLDOC->save("XMLTEST.XML");//可以保存对文件的修改;  
+ XMLNODES.Release();  
+ XMLNODE.Release();  
+ XMLROOT.Release();  
+ XMLDOC.Release();  
+ ::CoUninitialize();  

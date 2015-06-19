@@ -1,0 +1,600 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Knowledge name="八边形" id="{0da6b53d-9ba6-46bd-8c37-f3e76b907cf1}" description="八边形" version="1.0" pixfilename="">
+	<FileVersion>1.0</FileVersion>
+	<InputParams>
+		<Param name="L" nullallowed="false">
+			<min>9</min>
+			<max>18</max>
+			<value>14.32</value>
+			<description></description>
+			<type>float</type>
+		</Param>
+		<Param name="W" nullallowed="false">
+			<min>6</min>
+			<max>13</max>
+			<value>10.4</value>
+			<description>宽度</description>
+			<type>float</type>
+		</Param>
+		<Param name="H" nullallowed="false">
+			<min>0.6</min>
+			<max>100</max>
+			<value>0.82</value>
+			<description>H</description>
+			<type>float</type>
+		</Param>
+		<Param name="LI" nullallowed="false">
+			<min></min>
+			<max></max>
+			<value>10.64</value>
+			<description></description>
+			<type>float</type>
+		</Param>
+		<Param name="WI" nullallowed="false">
+			<min></min>
+			<max></max>
+			<value>7.4</value>
+			<description></description>
+			<type>float</type>
+		</Param>
+		<Param name="LO" nullallowed="false">
+			<min></min>
+			<max></max>
+			<value>2.77</value>
+			<description></description>
+			<type>float</type>
+		</Param>
+		<Param name="WO" nullallowed="false">
+			<min></min>
+			<max></max>
+			<value>2.65</value>
+			<description></description>
+			<type>float</type>
+		</Param>
+		<Param name="R" nullallowed="false">
+			<min></min>
+			<max></max>
+			<value>1.7</value>
+			<description></description>
+			<type>float</type>
+		</Param>
+		<Param name="Q" nullallowed="false">
+			<min></min>
+			<max></max>
+			<value>2000</value>
+			<description></description>
+			<type>int</type>
+		</Param>
+		<Param name="L_U" nullallowed="false">
+			<min></min>
+			<max></max>
+			<value>0</value>
+			<description></description>
+			<type>float</type>
+		</Param>
+		<Param name="L_L" nullallowed="false">
+			<min></min>
+			<max></max>
+			<value>-0.08</value>
+			<description></description>
+			<type>float</type>
+		</Param>
+		<Param name="W_U" nullallowed="false">
+			<min></min>
+			<max></max>
+			<value>0</value>
+			<description></description>
+			<type>float</type>
+		</Param>
+		<Param name="W_L" nullallowed="false">
+			<min></min>
+			<max></max>
+			<value>-0.08</value>
+			<description></description>
+			<type>float</type>
+		</Param>
+		<Param name="H_U" nullallowed="false">
+			<min></min>
+			<max></max>
+			<value>0</value>
+			<description></description>
+			<type>float</type>
+		</Param>
+		<Param name="H_L" nullallowed="false">
+			<min></min>
+			<max></max>
+			<value>-0.07</value>
+			<description></description>
+			<type>float</type>
+		</Param>
+		<Param name="LI_U" nullallowed="false">
+			<min></min>
+			<max></max>
+			<value>0.08</value>
+			<description></description>
+			<type>float</type>
+		</Param>
+		<Param name="LI_L" nullallowed="false">
+			<min></min>
+			<max></max>
+			<value>0</value>
+			<description></description>
+			<type>float</type>
+		</Param>
+		<Param name="WI_U" nullallowed="false">
+			<min></min>
+			<max></max>
+			<value>0.08</value>
+			<description></description>
+			<type>float</type>
+		</Param>
+		<Param name="WI_L" nullallowed="false">
+			<min></min>
+			<max></max>
+			<value>0</value>
+			<description></description>
+			<type>float</type>
+		</Param>
+		<Param name="LO_U" nullallowed="false">
+			<min></min>
+			<max></max>
+			<value>0.1</value>
+			<description></description>
+			<type>float</type>
+		</Param>
+		<Param name="LO_L" nullallowed="false">
+			<min></min>
+			<max></max>
+			<value>0</value>
+			<description></description>
+			<type>float</type>
+		</Param>
+		<Param name="WO_U" nullallowed="false">
+			<min></min>
+			<max></max>
+			<value>0.1</value>
+			<description></description>
+			<type>float</type>
+		</Param>
+		<Param name="WO_L" nullallowed="false">
+			<min></min>
+			<max></max>
+			<value>0</value>
+			<description></description>
+			<type>float</type>
+		</Param>
+		<Param name="R_U" nullallowed="false">
+			<min></min>
+			<max></max>
+			<value>0</value>
+			<description></description>
+			<type>float</type>
+		</Param>
+		<Param name="R_L" nullallowed="false">
+			<min></min>
+			<max></max>
+			<value>-0.35</value>
+			<description></description>
+			<type>float</type>
+		</Param>
+		<Param name="excelName" nullallowed="false">
+			<min></min>
+			<max></max>
+			<value>D:\\TestWC\\Workspace\\工艺\\毛坯库\\blank.xlsx</value>
+			<description></description>
+			<type>str</type>
+		</Param>
+	</InputParams>
+	<Limiters>
+		<Limiter name="Limit">
+			<description>Limit</description>
+			<Statement>
+				<![CDATA[L>=9 and L<=18
+W>=6 and W<=13
+H>=0.6
+abs(L_U-L_L)>=0.03
+abs(W_U-W_L)>=0.03
+abs(H_U-H_L)>=0.03
+abs(LI_U-LI_L)>=0.03
+abs(WI_U-WI_L)>=0.03
+abs(LO_U-LO_L)>=0.03
+abs(R_U-R_L)>=0.03]]>
+			</Statement>
+		</Limiter>
+	</Limiters>
+	<Output>
+		<OutputParams>
+			<Param name="页数">
+				<description></description>
+				<type>str</type>
+			</Param>
+			<Param name="页码">
+				<description></description>
+				<type>str</type>
+			</Param>
+			<Param name="L1">
+				<description>L1</description>
+				<type>str</type>
+			</Param>
+			<Param name="L2">
+				<description>L2</description>
+				<type>str</type>
+			</Param>
+			<Param name="L3">
+				<description>L3</description>
+				<type>str</type>
+			</Param>
+			<Param name="L4">
+				<description>L4</description>
+				<type>str</type>
+			</Param>
+			<Param name="L5">
+				<description>L5</description>
+				<type>str</type>
+			</Param>
+			<Param name="W1">
+				<description>W1</description>
+				<type>str</type>
+			</Param>
+			<Param name="W2">
+				<description>W2</description>
+				<type>str</type>
+			</Param>
+			<Param name="W3">
+				<description>W3</description>
+				<type>str</type>
+			</Param>
+			<Param name="H">
+				<description>H</description>
+				<type>str</type>
+			</Param>
+			<Param name="R">
+				<description>R</description>
+				<type>str</type>
+			</Param>
+			<Param name="φ">
+				<description>R</description>
+				<type>str</type>
+			</Param>
+			<Param name="涂层种类">
+				<description>涂层种类</description>
+				<type>str</type>
+			</Param>
+			<Param name="耐蚀性">
+				<description>耐蚀性</description>
+				<type>str</type>
+			</Param>
+			<Param name="涂层厚度">
+				<description>涂层厚度</description>
+				<type>str</type>
+			</Param>
+			<Param name="毛坯外形尺寸">
+				<description>毛坯外形尺寸</description>
+				<type>str</type>
+			</Param>
+		</OutputParams>
+		<OutputObjects>
+			<Object name="step1" type="CXObject">
+				<name type="str"></name>
+				<name3 type="str"></name3>
+				<name2 type="str"></name2>
+				<name4 type="str"></name4>
+				<name5 type="str"></name5>
+				<name6 type="str"></name6>
+				<name7 type="str"></name7>
+				<name8 type="str"></name8>
+				<name9 type="str"></name9>
+				<name10 type="str"></name10>
+				<name11 type="str"></name11>
+				<name12 type="str"></name12>
+				<name13 type="str"></name13>
+				<name14 type="str"></name14>
+				<name15 type="str"></name15>
+				<name16 type="str"></name16>
+				<name17 type="str"></name17>
+				<name18 type="str"></name18>
+			</Object>
+			<Object name="step2" type="CXObject">
+				<name type="str"></name>
+				<name3 type="str"></name3>
+				<name2 type="str"></name2>
+				<name4 type="str"></name4>
+				<name5 type="str"></name5>
+				<name6 type="str"></name6>
+				<name7 type="str"></name7>
+				<name8 type="str"></name8>
+				<name9 type="str"></name9>
+				<name10 type="str"></name10>
+				<name11 type="str"></name11>
+				<name12 type="str"></name12>
+				<name13 type="str"></name13>
+				<name14 type="str"></name14>
+				<name15 type="str"></name15>
+				<name16 type="str"></name16>
+				<name17 type="str"></name17>
+				<name18 type="str"></name18>
+			</Object>
+			<Object name="step3" type="CXObject">
+				<name type="str"></name>
+				<name3 type="str"></name3>
+				<name2 type="str"></name2>
+				<name4 type="str"></name4>
+				<name5 type="str"></name5>
+				<name6 type="str"></name6>
+				<name7 type="str"></name7>
+				<name8 type="str"></name8>
+				<name9 type="str"></name9>
+				<name10 type="str"></name10>
+				<name11 type="str"></name11>
+				<name12 type="str"></name12>
+				<name13 type="str"></name13>
+				<name14 type="str"></name14>
+				<name15 type="str"></name15>
+				<name16 type="str"></name16>
+				<name17 type="str"></name17>
+				<name18 type="str"></name18>
+			</Object>
+			<Object name="step4" type="CXObject">
+				<name type="str"></name>
+				<name3 type="str"></name3>
+				<name2 type="str"></name2>
+				<name4 type="str"></name4>
+				<name5 type="str"></name5>
+				<name6 type="str"></name6>
+				<name7 type="str"></name7>
+				<name8 type="str"></name8>
+				<name9 type="str"></name9>
+				<name10 type="str"></name10>
+				<name11 type="str"></name11>
+				<name12 type="str"></name12>
+				<name13 type="str"></name13>
+				<name14 type="str"></name14>
+				<name15 type="str"></name15>
+				<name16 type="str"></name16>
+				<name17 type="str"></name17>
+				<name18 type="str"></name18>
+			</Object>
+			<Object name="step5" type="CXObject">
+				<name type="str"></name>
+				<name3 type="str"></name3>
+				<name2 type="str"></name2>
+				<name4 type="str"></name4>
+				<name5 type="str"></name5>
+				<name6 type="str"></name6>
+				<name7 type="str"></name7>
+				<name8 type="str"></name8>
+				<name9 type="str"></name9>
+				<name10 type="str"></name10>
+				<name11 type="str"></name11>
+				<name12 type="str"></name12>
+				<name13 type="str"></name13>
+				<name14 type="str"></name14>
+				<name15 type="str"></name15>
+				<name16 type="str"></name16>
+				<name17 type="str"></name17>
+				<name18 type="str"></name18>
+			</Object>
+			<Object name="step6" type="CXObject">
+				<name type="str"></name>
+				<name3 type="str"></name3>
+				<name2 type="str"></name2>
+				<name4 type="str"></name4>
+				<name5 type="str"></name5>
+				<name6 type="str"></name6>
+				<name7 type="str"></name7>
+				<name8 type="str"></name8>
+				<name9 type="str"></name9>
+				<name10 type="str"></name10>
+				<name11 type="str"></name11>
+				<name12 type="str"></name12>
+				<name13 type="str"></name13>
+				<name14 type="str"></name14>
+				<name15 type="str"></name15>
+				<name16 type="str"></name16>
+				<name17 type="str"></name17>
+				<name18 type="str"></name18>
+			</Object>
+			<Object name="step7" type="CXObject">
+				<name type="str"></name>
+				<name3 type="str"></name3>
+				<name2 type="str"></name2>
+				<name4 type="str"></name4>
+				<name5 type="str"></name5>
+				<name6 type="str"></name6>
+				<name7 type="str"></name7>
+				<name8 type="str"></name8>
+				<name9 type="str"></name9>
+				<name10 type="str"></name10>
+				<name11 type="str"></name11>
+				<name12 type="str"></name12>
+				<name13 type="str"></name13>
+				<name14 type="str"></name14>
+				<name15 type="str"></name15>
+				<name16 type="str"></name16>
+				<name17 type="str"></name17>
+				<name18 type="str"></name18>
+			</Object>
+			<Object name="step8" type="CXObject">
+				<name type="str"></name>
+				<name3 type="str"></name3>
+				<name2 type="str"></name2>
+				<name4 type="str"></name4>
+				<name5 type="str"></name5>
+				<name6 type="str"></name6>
+				<name7 type="str"></name7>
+				<name8 type="str"></name8>
+				<name9 type="str"></name9>
+				<name10 type="str"></name10>
+				<name11 type="str"></name11>
+				<name12 type="str"></name12>
+				<name13 type="str"></name13>
+				<name14 type="str"></name14>
+				<name15 type="str"></name15>
+				<name16 type="str"></name16>
+				<name17 type="str"></name17>
+				<name18 type="str"></name18>
+			</Object>
+		</OutputObjects>
+	</Output>
+	<Rules>
+		<Rule name="S">
+			<description>Surface</description>
+			<Statement>
+				<![CDATA[S = H*((L-2*LO)*2+(W-2*WO)*2+pow(LO ** 2+WO ** 2,1/2)*4+pi*2*R+(LI-2*R)*2+(WI-2*R)*2)+(W*L-2*LO*WO-LI*WI+(4*(R**2)-pi*(R**2)))*2]]>
+			</Statement>
+		</Rule>
+		<Rule name="V">
+			<description>Volume</description>
+			<Statement>
+				<![CDATA[V = (W*L-2*LO*WO-LI*WI+(4*(R ** 2)-pi*pow(R,2)))*H]]>
+			</Statement>
+		</Rule>
+		<Rule name="Weight">
+			<description>Weight</description>
+			<Statement>
+				<![CDATA[Weight = V*7.5/1000]]>
+			</Statement>
+		</Rule>
+		<Rule name="L_U_RULE">
+			<description>L_U_RULE</description>
+			<Statement>
+				<![CDATA[L_U_RULE = L_U
+L_L_RULE = L_U_RULE - 0.03
+W_U_RULE = W_U
+W_L_RULE = W_U_RULE - 0.03
+H_U_RULE = H_U
+H_L_RULE = roundup(H_U_RULE-(H_U-H_L)/2,2)
+LI_L_RULE = LI_L - 0.01
+LI_U_RULE = LI_L_RULE + 0.04
+WI_L_RULE = WI_L - 0.01
+WI_U_RULE = WI_L_RULE + 0.04
+LO_U_RULE = LO_U - 0.02
+LO_L_RULE = LO_U + 0.02
+WO_U_RULE = WO_U - 0.02
+WO_L_RULE = WO_L + 0.02
+R_U_RULE = R_U - 0.05
+R_L_RULE = R_L + 0.05
+
+				]]>
+			</Statement>
+		</Rule>
+		<Rule name="pickBlankResult">
+			<description>pickBlankResult</description>
+			<Statement>
+				<![CDATA[pickBlankResult =  calIncomeRate(excelName, Q, L, W, H)
+#以下六个参数分别为：毛坯名称、长、宽、厚、所得率、反向所得率
+H13 = pickBlankResult[1][0]
+H15 = pickBlankResult[1][1]
+H16 = pickBlankResult[1][2]
+H17 = pickBlankResult[1][3]
+RATIO_N = pickBlankResult[1][4]
+RATIO_I = pickBlankResult[1][5]
+#判读是否需要反向
+if RATIO_N > RATIO_I:
+	H18 = RATIO_N
+	H14 = 1
+else:
+	H18 = RATIO_I
+	H14 = 0
+#以下四个参数分别为：长、宽、厚切割刀数，即出片数
+I15=int((H15-1.4)/(L+0.4))
+I16=int((H16-1.4)/(W+0.4))
+I17=int((H17-1.3)/(H+0.3))
+J15=I15*I16*I17
+#以下四个参数分别为：推荐毛坯长宽厚即推荐毛坯所得率
+K15 = pickBlankResult[2][0]
+K16 = pickBlankResult[2][1]
+K17 = pickBlankResult[2][2]
+K18 = pickBlankResult[2][3]
+
+#拼字符串显示
+blankSelection = '选择毛坯:'+H13+'\n调转：'+str(H14) +'\n长度:'+str(H15) + '\n宽度:'+str(H16) + '\n厚度:'+str(H17) + '\n所得率:'+str(H18)+'\nL切割次数：'+str(I15)+'\nW切割次数：'+str(I16)+'\nH切割次数：'+str(I17)+'\n出片数：'+str(J15)
+blankSuggest = '推荐毛坯:'+ '\n长度:'+str(K15) + '\n宽度:'+str(K16) + '\n厚度:'+str(K17) + '\n所得率:'+str(K18)]]>
+			</Statement>
+		</Rule>
+				<!--
+			切片机主轴跳动	切片刀片轴向跳动	切片刀片径向跳动	磨片主轴跳动	磨片砂轮轴向跳动
+0.01mm	0.03mm	0.05mm	0.01mm	0.1mm
+				
+				
+成型磨主轴跳动	成型砂轮轴向跳动			
+0.01mm	0.03mm			
+				
+切片机主轴跳动	切片刀头轴向跳动	切片刀头径向跳动		
+0.01mm	0.03mm	0.05mm		
+		-->
+		<Rule name="SETOBJECT">
+			<description>SETOBJECT</description>
+			<Statement>
+				<![CDATA[#设置第一个工序值
+step1.setValue('name', '1')
+step1.setValue('name2', '切片')
+step1.setValue('name3', '加工车间')
+step1.setValue('name4', CONCATENATE([H15,"切出",I15,"片"]))
+step1.setValue('name5', 'J5060C切片机')
+step1.setValue('name6', '直角模型')
+
+#设置第二个工序值
+step2.setValue('name', '2')
+step2.setValue('name2', '磨片')
+step2.setValue('name3', '加工车间')
+step2.setValue('name4',  '规格：' + str(L) + '  '+ tostr(L_U_RULE) + '/' + tostr(L_L_RULE))
+step2.setValue('name5', '双端面磨')
+
+#设置第三个工序值
+step3.setValue('name', '3')
+step3.setValue('name2', '切片')
+step3.setValue('name4', CONCATENATE([H16,"切出",I16,"片"]))
+
+#设置第四个工序值
+step4.setValue('name', '4')
+step4.setValue('name2', '磨片')
+step4.setValue('name4', '规格：' +str(W) + '  '+ tostr(W_U_RULE) + '/' + tostr(W_L_RULE))
+
+#设置第五个工序值
+step5.setValue('name', '5')
+step5.setValue('name2', '打丝丝孔')
+step5.setValue('name4', '穿丝孔  <Φ')
+
+#设置第六个工序值
+step6.setValue('name', '6')
+step6.setValue('name2', '成形磨')
+step6.setValue('name4',CONCATENATE(["磨LO ",LO,"  公差", tostr(LO_U_RULE),"/",tostr(LO_L_RULE)]) + CONCATENATE(["磨WO ",WO,"  公差",tostr(WO_U_RULE),"/",tostr(WO_L_RULE)])) 
+#step6.setValue('name4',CONCATENATE(["磨LO ",LO,"  公差",LO_U_RULE,"/",LO_L_RULE]) + CONCATENATE(["磨LO ",LO,"  公差",LO_U_RULE,"/",LO_L_RULE]) + '  规格：' + str(LO) + '  '+ tostr(LO_U_RULE) + '/' + tostr(LO_L_RULE) + '  ' + CONCATENATE(["磨WO ",WO,"  公差",WO_U_RULE,"/",WO_L_RULE]) + '  规格：' + str(WO) + '  '+ tostr(WO_U_RULE) + '/' + tostr(WO_L_RULE))
+
+#设置第七个工序值
+step7.setValue('name', '7')
+step7.setValue('name2', '线切割')
+step7.setValue('name4', CONCATENATE(["线切",LI,"公差",tostr(LI_U_RULE),"/",tostr(LI_L_RULE)]) + '   ' + CONCATENATE(["  线切",WI,"公差",tostr(WI_U_RULE),"/",tostr(WI_L_RULE)]))
+#step7.setValue('name4', CONCATENATE(["线切",LI,"公差",LI_U_RULE,"/",LI_L_RULE]) + '  规格：' + str(LI) + '  '+ tostr(LI_U_RULE) + '/' + tostr(LI_L_RULE) + '   ' + CONCATENATE(["  线切",WI,"公差",WI_U_RULE,"/",WI_L_RULE]) + '  规格：' + str(WI) + '  '+ tostr(WI_U_RULE) + '/' + tostr(WI_L_RULE))
+
+#设置第八个工序值
+step8.setValue('name', '8')
+step8.setValue('name2', '切片')
+step8.setValue('name4', CONCATENATE([H17,"切出",I17,"片"]) + '  规格：' + str(H) + '  '+ tostr(H_U_RULE) + '/' + tostr(H_L_RULE) + '\n' )
+
+#输出参数设置
+L1 = L
+L2 = LI
+L3 = LO
+L4 = 0
+L5 = 0
+W1 = W
+W2 = WI
+W3 = WO
+H = H
+R = R
+φ = 'txt'
+页码 = '1'
+页数 = '1'
+备注 = '八边形生成测试'
+其他说明 = '其他说明'
+涂层种类 = '环保彩锌'
+耐蚀性 = '盐雾48h'
+涂层厚度 = '5-10μm'
+毛坯外形尺寸 = str(H15) + '*' + str(H16) + '*' + str(H17)]]>
+			</Statement>
+		</Rule>
+	</Rules>
+	<ExtendModules/>
+</Knowledge>

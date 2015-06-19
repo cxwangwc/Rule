@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="GB2312"?>
+<REPORT RGLFileName="机械加工工序卡片（八边）">
+	<!-- 卡片节点，属性CardName(卡片名)，属性CardTemplateName（卡片模板名），属性CntCardTmpName(卡片续页模板名),属性TypeID（卡片类型ID）,属性RecordNum（对应的行记录号）  -->
+	<HEAD>
+		<!-- 公共信息 -->
+		<!-- 列节点，属性名name(列名)  -->
+		<!-- 节点值为单元格内容  -->
+		<CommonNode name="毛坯外形尺寸">59.0*32.0*26.0</CommonNode>
+	</HEAD>
+	<CARD CardName="机械加工工序卡片（八边）" CardTemplateName="机械加工工序卡片（八边）" TypeID="10" CtnCardTmpName="">
+		<!-- 单列节点，属性TableName（表区名）  -->
+		<HEAD>
+			<!-- 非表区内容，属性name（属性名），节点值为单元格内容  -->
+			<COLUMN name="页数">
+				<CELL Row="0">0</CELL>
+			</COLUMN>
+			<COLUMN name="涂层种类">
+				<CELL Row="0">环保彩锌</CELL>
+			</COLUMN>
+			<COLUMN name="耐蚀性">
+				<CELL Row="0">盐雾48h</CELL>
+			</COLUMN>
+			<COLUMN name="涂层厚度">
+				<CELL Row="0">5-10μm</CELL>
+			</COLUMN>
+			<COLUMN name="L1">
+				<CELL Row="0">14.32</CELL>
+			</COLUMN>
+			<COLUMN name="L2">
+				<CELL Row="0">10.64</CELL>
+			</COLUMN>
+			<COLUMN name="L3">
+				<CELL Row="0">2.77</CELL>
+			</COLUMN>
+			<COLUMN name="L4">
+				<CELL Row="0">0</CELL>
+			</COLUMN>
+			<COLUMN name="L5">
+				<CELL Row="0">0</CELL>
+			</COLUMN>
+			<COLUMN name="W1">
+				<CELL Row="0">10.4</CELL>
+			</COLUMN>
+			<COLUMN name="W2">
+				<CELL Row="0">7.4</CELL>
+			</COLUMN>
+			<COLUMN name="W3">
+				<CELL Row="0">2.65</CELL>
+			</COLUMN>
+			<COLUMN name="涂层种类">
+				<CELL Row="0">环保彩锌</CELL>
+			</COLUMN>
+			<COLUMN name="耐蚀性">
+				<CELL Row="0">盐雾48h</CELL>
+			</COLUMN>
+			<COLUMN name="涂层厚度">
+				<CELL Row="0">5-10μm</CELL>
+			</COLUMN>
+		</HEAD>
+		<!-- 表节点，属性TableName(表区名)  -->
+		<TABLE TableName="TABLE0">
+			<!-- 行记录节点（包含多列），属性RecordNum(行记录号)  -->
+			<LINERECORD RecordNum="0">
+				<COLUMN name="工序号">1</COLUMN>
+				<COLUMN name="工序">加工车间</COLUMN>
+				<COLUMN name="生产车间">切片</COLUMN>
+				<COLUMN name="工序内容">59.0切出3片</COLUMN>
+				<COLUMN name="设备名称">J5060C切片机</COLUMN>
+				<COLUMN name="夹具名称">直角模型</COLUMN>
+				<COLUMN name="主轴转速"></COLUMN>
+				<COLUMN name="砂轮/刀具轴向跳动"></COLUMN>
+				<COLUMN name="砂轮/刀具径向跳动"></COLUMN>
+				<COLUMN name="每次进刀量"></COLUMN>
+				<COLUMN name="刀口补偿量"></COLUMN>
+				<COLUMN name="切割厚度"></COLUMN>
+				<COLUMN name="切割片数"></COLUMN>
+				<COLUMN name="片厚设置"></COLUMN>
+				<COLUMN name="冷却液流量"></COLUMN>
+				<COLUMN name="线切割电流"></COLUMN>
+				<COLUMN name="线切割电压"></COLUMN>
+				<COLUMN name="线切割速度"></COLUMN>
+			</LINERECORD>
+			<LINERECORD RecordNum="1">
+				<COLUMN name="工序号">2</COLUMN>
+				<COLUMN name="工序">加工车间</COLUMN>
+				<COLUMN name="生产车间">磨片</COLUMN>
+				<COLUMN name="工序内容">规格：14.32  0/-0.03</COLUMN>
+				<COLUMN name="设备名称">双端面磨</COLUMN>
+				<COLUMN name="夹具名称"></COLUMN>
+				<COLUMN name="主轴转速"></COLUMN>
+				<COLUMN name="砂轮/刀具轴向跳动"></COLUMN>
+				<COLUMN name="砂轮/刀具径向跳动"></COLUMN>
+				<COLUMN name="每次进刀量"></COLUMN>
+				<COLUMN name="刀口补偿量"></COLUMN>
+				<COLUMN name="切割厚度"></COLUMN>
+				<COLUMN name="切割片数"></COLUMN>
+				<COLUMN name="片厚设置"></COLUMN>
+				<COLUMN name="冷却液流量"></COLUMN>
+				<COLUMN name="线切割电流"></COLUMN>
+				<COLUMN name="线切割电压"></COLUMN>
+				<COLUMN name="线切割速度"></COLUMN>
+			</LINERECORD>
+			<LINERECORD RecordNum="2">
+				<COLUMN name="工序号">3</COLUMN>
+				<COLUMN name="工序"></COLUMN>
+				<COLUMN name="生产车间">切片</COLUMN>
+				<COLUMN name="工序内容">32.0切出2片</COLUMN>
+				<COLUMN name="设备名称"></COLUMN>
+				<COLUMN name="夹具名称"></COLUMN>
+				<COLUMN name="主轴转速"></COLUMN>
+				<COLUMN name="砂轮/刀具轴向跳动"></COLUMN>
+				<COLUMN name="砂轮/刀具径向跳动"></COLUMN>
+				<COLUMN name="每次进刀量"></COLUMN>
+				<COLUMN name="刀口补偿量"></COLUMN>
+				<COLUMN name="切割厚度"></COLUMN>
+				<COLUMN name="切割片数"></COLUMN>
+				<COLUMN name="片厚设置"></COLUMN>
+				<COLUMN name="冷却液流量"></COLUMN>
+				<COLUMN name="线切割电流"></COLUMN>
+				<COLUMN name="线切割电压"></COLUMN>
+				<COLUMN name="线切割速度"></COLUMN>
+			</LINERECORD>
+			<LINERECORD RecordNum="3">
+				<COLUMN name="工序号">4</COLUMN>
+				<COLUMN name="工序"></COLUMN>
+				<COLUMN name="生产车间">磨片</COLUMN>
+				<COLUMN name="工序内容">规格：10.4  0/-0.03</COLUMN>
+				<COLUMN name="设备名称"></COLUMN>
+				<COLUMN name="夹具名称"></COLUMN>
+				<COLUMN name="主轴转速"></COLUMN>
+				<COLUMN name="砂轮/刀具轴向跳动"></COLUMN>
+				<COLUMN name="砂轮/刀具径向跳动"></COLUMN>
+				<COLUMN name="每次进刀量"></COLUMN>
+				<COLUMN name="刀口补偿量"></COLUMN>
+				<COLUMN name="切割厚度"></COLUMN>
+				<COLUMN name="切割片数"></COLUMN>
+				<COLUMN name="片厚设置"></COLUMN>
+				<COLUMN name="冷却液流量"></COLUMN>
+				<COLUMN name="线切割电流"></COLUMN>
+				<COLUMN name="线切割电压"></COLUMN>
+				<COLUMN name="线切割速度"></COLUMN>
+			</LINERECORD>
+			<LINERECORD RecordNum="4">
+				<COLUMN name="工序号">5</COLUMN>
+				<COLUMN name="工序"></COLUMN>
+				<COLUMN name="生产车间">打丝丝孔</COLUMN>
+				<COLUMN name="工序内容">穿丝孔  &lt;φ</COLUMN>
+				<COLUMN name="设备名称"></COLUMN>
+				<COLUMN name="夹具名称"></COLUMN>
+				<COLUMN name="主轴转速"></COLUMN>
+				<COLUMN name="砂轮/刀具轴向跳动"></COLUMN>
+				<COLUMN name="砂轮/刀具径向跳动"></COLUMN>
+				<COLUMN name="每次进刀量"></COLUMN>
+				<COLUMN name="刀口补偿量"></COLUMN>
+				<COLUMN name="切割厚度"></COLUMN>
+				<COLUMN name="切割片数"></COLUMN>
+				<COLUMN name="片厚设置"></COLUMN>
+				<COLUMN name="冷却液流量"></COLUMN>
+				<COLUMN name="线切割电流"></COLUMN>
+				<COLUMN name="线切割电压"></COLUMN>
+				<COLUMN name="线切割速度"></COLUMN>
+			</LINERECORD>
+			<LINERECORD RecordNum="5">
+				<COLUMN name="工序号">6</COLUMN>
+				<COLUMN name="工序"></COLUMN>
+				<COLUMN name="生产车间">成形磨</COLUMN>
+				<COLUMN name="工序内容">磨LO 2.77  公差+0.08/+0.12磨WO 2.65  公差+0.08/+0.02</COLUMN>
+				<COLUMN name="设备名称"></COLUMN>
+				<COLUMN name="夹具名称"></COLUMN>
+				<COLUMN name="主轴转速"></COLUMN>
+				<COLUMN name="砂轮/刀具轴向跳动"></COLUMN>
+				<COLUMN name="砂轮/刀具径向跳动"></COLUMN>
+				<COLUMN name="每次进刀量"></COLUMN>
+				<COLUMN name="刀口补偿量"></COLUMN>
+				<COLUMN name="切割厚度"></COLUMN>
+				<COLUMN name="切割片数"></COLUMN>
+				<COLUMN name="片厚设置"></COLUMN>
+				<COLUMN name="冷却液流量"></COLUMN>
+				<COLUMN name="线切割电流"></COLUMN>
+				<COLUMN name="线切割电压"></COLUMN>
+				<COLUMN name="线切割速度"></COLUMN>
+			</LINERECORD>
+			<LINERECORD RecordNum="6">
+				<COLUMN name="工序号">7</COLUMN>
+				<COLUMN name="工序"></COLUMN>
+				<COLUMN name="生产车间">线切割</COLUMN>
+				<COLUMN name="工序内容">线切10.64公差+0.03/-0.01     线切7.4公差+0.03/-0.01</COLUMN>
+				<COLUMN name="设备名称"></COLUMN>
+				<COLUMN name="夹具名称"></COLUMN>
+				<COLUMN name="主轴转速"></COLUMN>
+				<COLUMN name="砂轮/刀具轴向跳动"></COLUMN>
+				<COLUMN name="砂轮/刀具径向跳动"></COLUMN>
+				<COLUMN name="每次进刀量"></COLUMN>
+				<COLUMN name="刀口补偿量"></COLUMN>
+				<COLUMN name="切割厚度"></COLUMN>
+				<COLUMN name="切割片数"></COLUMN>
+				<COLUMN name="片厚设置"></COLUMN>
+				<COLUMN name="冷却液流量"></COLUMN>
+				<COLUMN name="线切割电流"></COLUMN>
+				<COLUMN name="线切割电压"></COLUMN>
+				<COLUMN name="线切割速度"></COLUMN>
+			</LINERECORD>
+			<LINERECORD RecordNum="7">
+				<COLUMN name="工序号">8</COLUMN>
+				<COLUMN name="工序"></COLUMN>
+				<COLUMN name="生产车间">切片</COLUMN>
+				<COLUMN name="工序内容">26.0切出22片  规格：0.82  0/-0.03
+</COLUMN>
+				<COLUMN name="设备名称"></COLUMN>
+				<COLUMN name="夹具名称"></COLUMN>
+				<COLUMN name="主轴转速"></COLUMN>
+				<COLUMN name="砂轮/刀具轴向跳动"></COLUMN>
+				<COLUMN name="砂轮/刀具径向跳动"></COLUMN>
+				<COLUMN name="每次进刀量"></COLUMN>
+				<COLUMN name="刀口补偿量"></COLUMN>
+				<COLUMN name="切割厚度"></COLUMN>
+				<COLUMN name="切割片数"></COLUMN>
+				<COLUMN name="片厚设置"></COLUMN>
+				<COLUMN name="冷却液流量"></COLUMN>
+				<COLUMN name="线切割电流"></COLUMN>
+				<COLUMN name="线切割电压"></COLUMN>
+				<COLUMN name="线切割速度"></COLUMN>
+			</LINERECORD>
+		</TABLE>
+	</CARD>
+</REPORT>

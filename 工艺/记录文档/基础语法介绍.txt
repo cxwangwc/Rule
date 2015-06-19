@@ -1,0 +1,88 @@
+1. python中有4中类型的数：整数、长整数、浮点数和复数
+
+	整数：类型名int
+	长整数：在数字后面跟着一个大写或小写的L，如51924361L
+	浮点数：类型名float
+	复数：类型名complex
+	
+	下面是一些数字类型的例子：
+	
+	int	 long	 float	 complex
+	10	 51924361L	 0.0	 3.14j
+	100	 -0x19323L	 15.20	 45.j
+	-786	 0122L	 -21.9	 9.322e-36j
+	080	 0xDEFABCEL	 32.3+e18	 .876j
+	-0490	 5356336L	 -90.	 -.6545+0J
+	-0x260	 -052315L	 -32.54e100	 3e+26J
+	0x69	 -472129L	 70.2-E12	 4.53e-7j
+	
+2.赋值语句
+	python中无需声明类型，就可对变量赋值
+	
+	如：
+		a=100 #
+		a='tst' #
+		a=100.0 #
+		a=5+4j #
+	以上语法在python中是允许的，
+	第一句执行之后 a是整数100，之后a变成字符串tst，再后变成浮点数100.0，最后是复数5+4j
+
+3.在python中没有switch语句！使用  
+             if  True：   
+             elif 条件二：     
+             else：  
+	if elif 条件之后，必须添加冒号，冒号之后主要换行，开始书写其余执行语句
+	注意最后没有end if！！ 
+	
+	如：	
+		if (OUT_PIECE_COUNT > Quantity):
+			RRatio.result=Quantity*L*W*H/(L_REAL*W_REAL*H_REAL)
+		elif (OUT_PIECE_COUNT < Quantity/2):
+			RRatio.result=OUT_PIECE_COUNT*L*W*H/(L_REAL*W_REAL*H_REAL)
+		else:
+			RRatio.result=OUT_PIECE_COUNT*L*W*H/(L_REAL*W_REAL*H_REAL*2)
+		
+4.while 条件：  
+       语句  
+	书写while条件之后，必须添加冒号，再换行，书写语句
+	
+	如：
+		while i < 100:
+			print (i)
+			i++
+			
+5.for语句：  
+	比较常用的是如下写法：
+		for i in range(start, end):
+			语句
+		等同于c++的
+		for (int i = start;i < end;i++)
+			语句
+	如：
+     for i in range(1, 5):  
+        print (i)  
+
+6.str是字符串的类
+	常用的函数有：len(str),str.endswith('q')
+	
+	把数字类型转换成字符串，只需在数字前添加str()即可
+	
+	如：	
+		a= 100
+		b= 200
+		
+		result= str(100) +'+' str(200) + ' = ' + str(a+b)
+		
+		result的字符串值为 ：
+			100+200=300
+		
+7、常用数学函数介绍
+	pi: 常量 3.1415926...
+	abs(number)　　　返回数字的绝对值
+　　ceil(number)　　　返回数的上入整数，返回值的类型为浮点数
+　　floor(number)　　 返回数的下舍整数，返回值的类型为浮点数 
+　　sqrt(number)　　 返回平方根，不适用于负数 如：sqrt(64) 返回8
+　　pow(x,y)　　　　　 返回x的y次幂 如：pow(3, 3) 返回27
+　　round(number[, ndigits])  根据给定的精度对数字进行四舍五入 如:round(3.1415, 2) 返回3.14
+	其他的三角函数
+	如sin(x), cos(x), tan(x)等都是内置函数

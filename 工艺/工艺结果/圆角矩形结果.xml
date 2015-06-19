@@ -1,0 +1,561 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Knowledge name="偏差" id="{233a3845-e662-4201-8f5b-54f0389841c5}" description="偏差" version="1.0" pixfilename="D:/TestWC/qapp/qapp/caxa.png">
+	<FileVersion>1.0</FileVersion>
+	<InputParams>
+		<Param name="L" nullallowed="true">
+			<min></min>
+			<max></max>
+			<value>5.54</value>
+			<description>长度</description>
+			<type>float</type>
+		</Param>
+		<Param name="L_UPPER" nullallowed="true">
+			<min></min>
+			<max></max>
+			<value>0.01</value>
+			<description>长度上偏差</description>
+			<type>float</type>
+		</Param>
+		<Param name="L_LOWER" nullallowed="true">
+			<min></min>
+			<max></max>
+			<value>-0.03</value>
+			<description>长度下偏差</description>
+			<type>int</type>
+		</Param>
+		<Param name="W" nullallowed="true">
+			<min></min>
+			<max></max>
+			<value>4.17</value>
+			<description>宽度</description>
+			<type>float</type>
+		</Param>
+		<Param name="W_UPPER" nullallowed="true">
+			<min></min>
+			<max></max>
+			<value>0.01</value>
+			<description>宽度上偏差</description>
+			<type>float</type>
+		</Param>
+		<Param name="W_LOWER" nullallowed="true">
+			<min></min>
+			<max></max>
+			<value>-0.03</value>
+			<description>宽度下偏差</description>
+			<type>float</type>
+		</Param>
+		<Param name="H" nullallowed="true">
+			<min></min>
+			<max></max>
+			<value>0.75</value>
+			<description>厚度</description>
+			<type>float</type>
+		</Param>
+		<Param name="H_UPPER" nullallowed="true">
+			<min></min>
+			<max></max>
+			<value>0.02</value>
+			<description>厚度上偏差</description>
+			<type>float</type>
+		</Param>
+		<Param name="H_LOWER" nullallowed="true">
+			<min></min>
+			<max></max>
+			<value>-0.03</value>
+			<description>厚度下偏差</description>
+			<type>float</type>
+		</Param>
+		<Param name="RADIUS" nullallowed="true">
+			<min></min>
+			<max></max>
+			<value>1.2</value>
+			<description>圆角半径</description>
+			<type>float</type>
+		</Param>
+		<Param name="RADIUS_UPPER" nullallowed="true">
+			<min></min>
+			<max></max>
+			<value>0.3</value>
+			<description>圆角半径上偏差</description>
+			<type>float</type>
+		</Param>
+		<Param name="RADIUS_LOWER" nullallowed="true">
+			<min></min>
+			<max></max>
+			<value>0</value>
+			<description>圆角半径下偏差</description>
+			<type>float</type>
+		</Param>
+		<Param name="Quantity" nullallowed="true">
+			<min></min>
+			<max></max>
+			<value>2000</value>
+			<description>数量</description>
+			<type>int</type>
+		</Param>
+		<Param name="excelName" nullallowed="true">
+			<min></min>
+			<max></max>
+			<value>C:\\Documents and Settings\\Administrator\\桌面\\blank.xlsx</value>
+			<description>毛坯库保存路径</description>
+			<type>str</type>
+		</Param>
+	</InputParams>
+	<Output>
+		<OutputParams>
+			<Param name="step1">
+				<description>第一道工序 : 59.0切出9片，  L规格：5.54(0.010000000000000002-0.04)
+</description>
+				<type>str</type>
+			</Param>
+			<Param name="step2">
+				<description>第一道工序 : 32.0切出6片，  W规格：4.17(-0.06-0.04)</description>
+				<type>str</type>
+			</Param>
+			<Param name="step3">
+				<description>第一道工序 : 26.0切出23片, 此方向不磨  H规格：4.17(0.01-0.04)</description>
+				<type>str</type>
+			</Param>
+			<Param name="OUT_PIECE_COUNT">
+				<description>总出片数 : 1242</description>
+				<type>str</type>
+			</Param>
+			<Param name="ratio">
+				<description>不转向所得率 : 43.84%</description>
+				<type>str</type>
+			</Param>
+			<Param name="SlicerSpindleRotation">
+				<description>切片机主轴转动 : 0.01mm</description>
+				<type>str</type>
+			</Param>
+			<Param name="SliceAxialRunout">
+				<description>切片刀片轴向跳动 : 0.03mm</description>
+				<type>str</type>
+			</Param>
+			<Param name="SliceRadialRunout">
+				<description>切片刀片径向跳动 : 0.05mm</description>
+				<type>str</type>
+			</Param>
+			<Param name="GrindingSpindle">
+				<description>磨片主轴跳动 : 0.01mm</description>
+				<type>str</type>
+			</Param>
+			<Param name="GrindingWheelAxialRunout">
+				<description>磨片砂轮轴向跳动 : 0.1mm</description>
+				<type>str</type>
+			</Param>
+			<Param name="MoldingGrindingSpindle">
+				<description>成型磨主轴跳动 : 0.01mm</description>
+				<type>str</type>
+			</Param>
+			<Param name="SandWheelRatioRunout ">
+				<description>成型砂轮轴向跳动 : 0.03mm</description>
+				<type>str</type>
+			</Param>
+			<Param name="SlicingMachineSpindle">
+				<description>切片机主轴跳动 : 0.01mm</description>
+				<type>str</type>
+			</Param>
+			<Param name="CuttingAxialRunout">
+				<description>切片刀头轴向跳动 : 0.03mm</description>
+				<type>str</type>
+			</Param>
+			<Param name="CuttingRadialRunout">
+				<description>切片刀头径向跳动 : 0.05mm</description>
+				<type>str</type>
+			</Param>
+			<Param name="Recommond">
+				<description>推荐毛坯 : 推荐毛坯长度:54.9
+推荐毛坯宽度:28.8
+推荐毛坯厚度:25.5</description>
+				<type>str</type>
+			</Param>
+			<Param name="recommondRatio">
+				<description>推荐毛坯收得率 : 53.37%</description>
+				<type>float</type>
+			</Param>
+			<Param name="OverRatio">
+				<description>转向所得率 : 48.71%</description>
+				<type>str</type>
+			</Param>
+			<Param name="rotate">
+				<description>是否转向 : 需要转向</description>
+				<type>int</type>
+			</Param>
+			<Param name="blankRatios">
+				<description>可选毛坯即所得率 : [[&apos;S1&apos;, 54.0, 54.0, 33.0, 0.36011036288814063, 0.36011036288814063], [&apos;S2&apos;, 53.0, 25.0, 18.0, 0.4358830188679245, 0.35960349056603774], [&apos;S3&apos;, 33.0, 23.0, 24.0, 0.3994876482213439, 0.3595388833992094], [&apos;S4&apos;, 46.0, 25.0, 14.0, 0.45199173913043483, 0.3486793416149068], [&apos;S5&apos;, 25.0, 32.0, 23.0, 0.3389938043478261, 0.4708247282608695], [&apos;S6&apos;, 26.0, 44.0, 22.0, 0.47088459154481876, 0.45780446400190716], [&apos;S7&apos;, 19.0, 12.0, 26.0, 0.26889746963562755, 0.20167310222672064], [&apos;S8&apos;, 44.0, 33.0, 16.0, 0.40720502324380164, 0.4362910963326446], [&apos;S9&apos;, 37.0, 18.0, 15.0, 0.338202027027027, 0.31565522522522516], [&apos;S10&apos;, 36.0, 44.0, 32.0, 0.446079678622159, 0.48573120561079547], [&apos;S11&apos;, 59.0, 32.0, 26.0, 0.4383826332301174, 0.4870918147001304], [&apos;S12&apos;, 24.0, 23.0, 16.0, 0.30603607336956523, 0.30603607336956523], [&apos;S13&apos;, 27.0, 28.0, 35.0, 0.4190802721088435, 0.4190802721088435]]</description>
+				<type>str</type>
+			</Param>
+		</OutputParams>
+		<OutputObjects>
+			<Object name="obj" type="CXObject">
+				<name type="str">输出对象测试</name>
+				<step1 type="str">59.0切出9片，  L规格：5.54(0.010000000000000002-0.04)
+</step1>
+				<step2 type="str">32.0切出6片，  W规格：4.17(-0.06-0.04)</step2>
+				<step3 type="str">26.0切出23片, 此方向不磨  H规格：4.17(0.01-0.04)</step3>
+				<outCount type="str">1242</outCount>
+				<ratio type="float">43.840000</ratio>
+				<recommond type="str">推荐毛坯长度:54.9
+推荐毛坯宽度:28.8
+推荐毛坯厚度:25.5</recommond>
+				<recommondRatio type="str">53.37%</recommondRatio>
+				<overRatio type="str">48.71%</overRatio>
+				<rotate type="str">需要转向</rotate>
+			</Object>
+		</OutputObjects>
+	</Output>
+	<Rules>
+		<Rule name="Surface">
+			<description>Surface</description>
+			<Statement>
+				<![CDATA[Surface=(L*W-pow((2*RADIUS),2)+pi*pow(RADIUS,2))*2 + (L+W-4*RADIUS+pi*RADIUS)*2*H]]>
+			</Statement>
+		</Rule>
+		<Rule name="Volume">
+			<description>Volume</description>
+			<Statement>
+				<![CDATA[Volume=(L*W-pow(2*RADIUS, 2) + pi*pow(RADIUS,2))*H]]>
+			</Statement>
+		</Rule>
+		<Rule name="Weight">
+			<description>Weight</description>
+			<Statement>
+				<![CDATA[Weight=Volume*7.5/1000]]>
+			</Statement>
+		</Rule>
+		<Rule name="GrossArea">
+			<description>GrossArea</description>
+			<Statement>
+				<![CDATA[GrossArea=Quantity*Surface/10000]]>
+			</Statement>
+		</Rule>
+		<Rule name="TotalWeight">
+			<description>TotalWeight</description>
+			<Statement>
+				<![CDATA[TotalWeight=Quantity*Weight/1000]]>
+			</Statement>
+		</Rule>
+		<Rule name="Coatingtype">
+			<description>Coatingtype</description>
+			<Statement>
+				<![CDATA[Coatingtype='环保彩锌']]>
+			</Statement>
+		</Rule>
+		<Rule name="CoatingThick">
+			<description>CoatingThick</description>
+			<Statement>
+				<![CDATA[CoatingThick=6]]>
+			</Statement>
+		</Rule>
+		<Rule name="SmogRequire">
+			<description>SmogRequire</description>
+			<Statement>
+				<![CDATA[SmogRequire='48h, 7']]>
+			</Statement>
+		</Rule>
+		<Rule name="BindingForc">
+			<description>BindingForc</description>
+			<Statement>
+				<![CDATA[BindingForce='有']]>
+			</Statement>
+		</Rule>
+		<Rule name="L_CAL_UPPER">
+			<description>L_CAL_UPPER</description>
+			<Statement>
+				<![CDATA[L_CAL_UPPER=roundup((L_UPPER+L_LOWER)/2 + 0.04, 2)]]>
+			</Statement>
+		</Rule>
+		<Rule name="L_CAL_LOWER">
+			<description>L_CAL_LOWER</description>
+			<Statement>
+				<![CDATA[L_CAL_LOWER=L_CAL_UPPER-0.03]]>
+			</Statement>
+		</Rule>
+		<Rule name="W_CAL_UPPER">
+			<description>W_CAL_UPPER</description>
+			<Statement>
+				<![CDATA[W_CAL_UPPER=roundup((W_UPPER+W_LOWER)/2 + 0.04, 2)]]>
+			</Statement>
+		</Rule>
+		<Rule name="W_CAL_LOWER">
+			<description>W_CAL_LOWER</description>
+			<Statement>
+				<![CDATA[W_CAL_LOWER=W_LOWER-0.03]]>
+			</Statement>
+		</Rule>
+		<Rule name="H_CAL_UPPER">
+			<description>H_CAL_UPPER</description>
+			<Statement>
+				<![CDATA[if (H_UPPER-H_LOWER < 0.08):
+	H_CAL_UPPER=roundup(H_UPPER+0.02, 2)
+else:
+	H_CAL_UPPER=roundup((H_UPPER+H_LOWER)/2+0.06, 2)]]>
+			</Statement>
+		</Rule>
+		<Rule name="H_CAL_LOWER">
+			<description>H_CAL_LOWER</description>
+			<Statement>
+				<![CDATA[if (H_CAL_UPPER-0.04 > H_LOWER + 0.06):
+	H_CAL_LOWER=round(H_CAL_UPPER-0.04, 2)
+elif (H_CAL_UPPER - H_LOWER >= 0.07):
+	H_CAL_LOWER=round(H_CAL_UPPER-0.03, 2)
+else:
+	H_CAL_LOWER=H_LOWER+0.03]]>
+			</Statement>
+		</Rule>
+		<Rule name="pickBlank">
+			<description>毛坯选择</description>
+			<Statement>
+				<![CDATA[pickBlankResult =  calIncomeRate(excelName, Quantity, L, W, H)
+L_REAL = pickBlankResult[1][1]
+W_REAL = pickBlankResult[1][2]
+H_REAL = pickBlankResult[1][3]
+blankRatios = str(pickBlankResult[0])]]>
+			</Statement>
+		</Rule>
+		<Rule name="SERVERAL_RULES">
+			<description>SERVERAL_RULES</description>
+			<Statement>
+				<![CDATA[RADIUS_CAL_UPPER=RADIUS_UPPER-0.05
+RADIUS_CAL_LOWER=RADIUS_LOWER+0.05
+DIAGONAL_UPPER = round(sqrt(pow((L+(L_CAL_UPPER+L_CAL_LOWER)/2-2 * (RADIUS+RADIUS_CAL_UPPER)), 2) + pow((W+(W_CAL_UPPER+W_CAL_LOWER)/2-2*(RADIUS+RADIUS_CAL_UPPER)),2)) + 2*(RADIUS+RADIUS_CAL_UPPER), 2)
+DIAGONAL_LOWER = round(sqrt(pow((L+(L_CAL_UPPER+L_CAL_LOWER)/2-2 * (RADIUS+RADIUS_CAL_LOWER)), 2) + pow((W+(W_CAL_UPPER+W_CAL_LOWER)/2-2*(RADIUS+RADIUS_CAL_LOWER)),2)) + 2*(RADIUS+RADIUS_CAL_LOWER), 2)
+L_CUT_TIMES=int((L_REAL-1.4)/(L+0.4))
+W_CUT_TIMES=int((W_REAL-1.4)/(W+0.4))
+H_CUT_TIMES=int((H_REAL-1.3)/(H+0.3))
+L_RECOMMEND=roundup((L+0.4)*L_CUT_TIMES+1.4,1)
+W_RECOMMEND=roundup((W+0.4)*W_CUT_TIMES+1.4,1)
+H_RECOMMEND=roundup((L+0.3)*H_CUT_TIMES+1.3,1)
+OUT_PIECE_COUNT=L_CUT_TIMES*W_CUT_TIMES*H_CUT_TIMES]]>
+			</Statement>
+		</Rule>
+		<Rule name="step1">
+			<description>step1</description>
+			<Statement>
+				<![CDATA[step1 = str(L_REAL)+ '切出'+str(L_CUT_TIMES)+'片，  L规格：'+ str(L)+ '('+str(L_CAL_LOWER)+ '-'+str(L_CAL_UPPER)+')'+'\n']]>
+			</Statement>
+		</Rule>
+		<Rule name="step2">
+			<description>step2</description>
+			<Statement>
+				<![CDATA[step2 = str(W_REAL)+ '切出'+str(W_CUT_TIMES)+ '片，  W规格：'+str(W)+ '('+str(W_CAL_LOWER)+ '-'+str(W_CAL_UPPER)+')'
+]]>
+			</Statement>
+		</Rule>
+		<Rule name="step3">
+			<description>step3</description>
+			<Statement>
+				<![CDATA[step3 = str(H_REAL)+'切出'+str(H_CUT_TIMES)+'片, 此方向不磨  H规格：'+str(W)+ '('+str(H_CAL_LOWER)+ '-'+str(H_CAL_UPPER)+')']]>
+			</Statement>
+		</Rule>
+		<Rule name="ratio_cal">
+			<description>ratio</description>
+			<Statement>
+				<![CDATA[if (OUT_PIECE_COUNT > Quantity):
+	ratio=Quantity*L*W*H/(L_REAL*W_REAL*H_REAL)
+else:
+	ratio=OUT_PIECE_COUNT*L*W*H/(L_REAL*W_REAL*H_REAL)
+ratio = str(round(ratio*100, 2))+'%']]>
+			</Statement>
+		</Rule>
+		<Rule name="SlicerSpindleRotation_cal">
+			<description>切片机主轴转动</description>
+			<Statement>
+				<![CDATA[SlicerSpindleRotation = '0.01mm']]>
+			</Statement>
+		</Rule>
+		<Rule name="SliceAxialRunout_cal">
+			<description>切片刀片轴向跳动</description>
+			<Statement>
+				<![CDATA[SliceAxialRunout = '0.03mm']]>
+			</Statement>
+		</Rule>
+		<Rule name="SliceRadialRunout_cal">
+			<description>切片刀片径向转动</description>
+			<Statement>
+				<![CDATA[SliceRadialRunout = '0.05mm']]>
+			</Statement>
+		</Rule>
+		<Rule name="GrindingSpindle_cal">
+			<description>磨片主轴跳动</description>
+			<Statement>
+				<![CDATA[GrindingSpindle = '0.01mm']]>
+			</Statement>
+		</Rule>
+		<Rule name="GrindingWheelAxialRunout_cal">
+			<description>磨片砂轮轴向转动</description>
+			<Statement>
+				<![CDATA[GrindingWheelAxialRunout  = '0.1mm']]>
+			</Statement>
+		</Rule>
+		<Rule name="MoldingGrindingSpindle_cal">
+			<description>成形磨主轴跳动</description>
+			<Statement>
+				<![CDATA[MoldingGrindingSpindle = '0.01mm']]>
+			</Statement>
+		</Rule>
+		<Rule name="SandWheelRatioRunout_cal">
+			<description>成型砂轮轴向跳动</description>
+			<Statement>
+				<![CDATA[SandWheelRatioRunout = '0.03mm']]>
+			</Statement>
+		</Rule>
+		<Rule name="SlicingMachineSpindle_cal">
+			<description>切片机主轴跳动</description>
+			<Statement>
+				<![CDATA[SlicingMachineSpindle = '0.01mm']]>
+			</Statement>
+		</Rule>
+		<Rule name="CuttingAxialRunout_cal">
+			<description>切片刀头轴向跳动</description>
+			<Statement>
+				<![CDATA[CuttingAxialRunout = '0.03mm']]>
+			</Statement>
+		</Rule>
+		<Rule name="CuttingRadialRunout_cal">
+			<description>切片刀头径向转动</description>
+			<Statement>
+				<![CDATA[CuttingRadialRunout = '0.05mm']]>
+			</Statement>
+		</Rule>
+		<Rule name="Recommond_cal">
+			<description>推荐毛坯计算</description>
+			<Statement>
+				<![CDATA[L_RECOMMEND=round((L+0.4)*L_CUT_TIMES+1.4,1)
+W_RECOMMEND=round((W+0.4)*W_CUT_TIMES+1.4,1)
+H_RECOMMEND=round((H+0.3)*H_CUT_TIMES+1.3,1)
+Recommond = '推荐毛坯长度:' + str(L_RECOMMEND) + '\n推荐毛坯宽度:' + str(W_RECOMMEND) + '\n推荐毛坯厚度:' + str(H_RECOMMEND)]]>
+			</Statement>
+		</Rule>
+		<Rule name="recommondRatio_cal">
+			<description>推荐毛坯收得率</description>
+			<Statement>
+				<![CDATA[if Quantity > OUT_PIECE_COUNT:
+	recommondRatio = L*W*H*OUT_PIECE_COUNT/(L_RECOMMEND * W_RECOMMEND * H_RECOMMEND)
+else:
+	recommondRatio = L*W*H*Quantity/(L_RECOMMEND * W_RECOMMEND * H_RECOMMEND)
+
+recommondRatio = str(round(recommondRatio*100, 2)) +'%']]>
+			</Statement>
+		</Rule>
+		<Rule name="tdong">
+			<description>跳动tst</description>
+			<Statement>
+				<![CDATA[tiaoDong = sin(30) * 100 / pi]]>
+			</Statement>
+		</Rule>
+		<Rule name="OverRatio_cal">
+			<description>转向所得率</description>
+			<Statement>
+				<![CDATA[#转向所得率计算
+L_CUT_TIMES2=int((W_REAL-1.4)/(L+0.4))
+W_CUT_TIMES2=int((L_REAL-1.4)/(W+0.4))
+H_CUT_TIMES2=int((H_REAL-1.3)/(H+0.3))
+OUT_PIECE_COUNT2=L_CUT_TIMES2*W_CUT_TIMES2*H_CUT_TIMES2
+if (OUT_PIECE_COUNT2 > Quantity):
+	OverRatio=Quantity*L*W*H/(L_REAL*W_REAL*H_REAL)
+else:
+	OverRatio=OUT_PIECE_COUNT2*L*W*H/(L_REAL*W_REAL*H_REAL)
+OverRatio = str(round(OverRatio*100, 2))+'%']]>
+			</Statement>
+		</Rule>
+		<Rule name="rotate">
+			<description>是否转向</description>
+			<Statement>
+				<![CDATA[rotate = OverRatio > ratio and '需要转向' or '不需要转向']]>
+			</Statement>
+		</Rule>
+		<Rule name="obj.step1">
+			<description>第一工序</description>
+			<Statement>
+				<![CDATA[obj.setValue('step1', str(L_REAL)+ '切出'+str(L_CUT_TIMES)+'片，  L规格：'+ str(L)+ '('+str(L_CAL_LOWER)+ '-'+str(L_CAL_UPPER)+')'+'\n')]]>
+			</Statement>
+		</Rule>
+		<Rule name="obj.step2">
+			<description>第二工序</description>
+			<Statement>
+				<![CDATA[obj.setValue('step2', str(W_REAL)+ '切出'+str(W_CUT_TIMES)+ '片，  W规格：'+str(W)+ '('+str(W_CAL_LOWER)+ '-'+str(W_CAL_UPPER)+')')]]>
+			</Statement>
+		</Rule>
+		<Rule name="obj.step3">
+			<description>第三</description>
+			<Statement>
+				<![CDATA[obj.setValue('step3', str(H_REAL)+'切出'+str(H_CUT_TIMES)+'片, 此方向不磨  H规格：'+str(W)+ '('+str(H_CAL_LOWER)+ '-'+str(H_CAL_UPPER)+')')]]>
+			</Statement>
+		</Rule>
+		<Rule name="obj.outCount">
+			<description>输出片数</description>
+			<Statement>
+				<![CDATA[RADIUS_CAL_UPPER=RADIUS_UPPER-0.05
+RADIUS_CAL_LOWER=RADIUS_LOWER+0.05
+DIAGONAL_UPPER = round(sqrt(pow((L+(L_CAL_UPPER+L_CAL_LOWER)/2-2 * (RADIUS+RADIUS_CAL_UPPER)), 2) + pow((W+(W_CAL_UPPER+W_CAL_LOWER)/2-2*(RADIUS+RADIUS_CAL_UPPER)),2)) + 2*(RADIUS+RADIUS_CAL_UPPER), 2)
+DIAGONAL_LOWER = round(sqrt(pow((L+(L_CAL_UPPER+L_CAL_LOWER)/2-2 * (RADIUS+RADIUS_CAL_LOWER)), 2) + pow((W+(W_CAL_UPPER+W_CAL_LOWER)/2-2*(RADIUS+RADIUS_CAL_LOWER)),2)) + 2*(RADIUS+RADIUS_CAL_LOWER), 2)
+L_CUT_TIMES=int((L_REAL-1.4)/(L+0.4))
+W_CUT_TIMES=int((W_REAL-1.4)/(W+0.4))
+H_CUT_TIMES=int((H_REAL-1.3)/(H+0.3))
+L_RECOMMEND=roundup((L+0.4)*L_CUT_TIMES+1.4,1)
+W_RECOMMEND=roundup((W+0.4)*W_CUT_TIMES+1.4,1)
+H_RECOMMEND=roundup((L+0.3)*H_CUT_TIMES+1.3,1)
+OUT_PIECE_COUNT=L_CUT_TIMES*W_CUT_TIMES*H_CUT_TIMES
+obj.setValue('outCount', str(OUT_PIECE_COUNT))]]>
+			</Statement>
+		</Rule>
+		<Rule name="obj.ratio">
+			<description>obj.ratio</description>
+			<Statement>
+				<![CDATA[if (OUT_PIECE_COUNT > Quantity):
+	RT = Quantity*L*W*H/(L_REAL*W_REAL*H_REAL)
+else:
+	RT = OUT_PIECE_COUNT*L*W*H/(L_REAL*W_REAL*H_REAL)
+#obj.setValue('ratio', str(round(RT*100, 2))+'%')
+obj.setValue('ratio', round(RT*100, 2))]]>
+			</Statement>
+		</Rule>
+		<Rule name="obj.recommond">
+			<description>obj.recommond</description>
+			<Statement>
+				<![CDATA[L_RECOMMEND=round((L+0.4)*L_CUT_TIMES+1.4,1)
+W_RECOMMEND=round((W+0.4)*W_CUT_TIMES+1.4,1)
+H_RECOMMEND=round((H+0.3)*H_CUT_TIMES+1.3,1)
+Recommond = '推荐毛坯长度:' + str(L_RECOMMEND) + '\n推荐毛坯宽度:' + str(W_RECOMMEND) + '\n推荐毛坯厚度:' + str(H_RECOMMEND)
+obj.setValue('recommond', Recommond)]]>
+			</Statement>
+		</Rule>
+		<Rule name="obj.recommondRatio">
+			<description></description>
+			<Statement>
+				<![CDATA[if Quantity > OUT_PIECE_COUNT:
+	recommondRatio = L*W*H*OUT_PIECE_COUNT/(L_RECOMMEND * W_RECOMMEND * H_RECOMMEND)
+else:
+	recommondRatio = L*W*H*Quantity/(L_RECOMMEND * W_RECOMMEND * H_RECOMMEND)
+
+recommondRatio = str(round(recommondRatio*100, 2)) +'%'
+obj.setValue('recommondRatio', recommondRatio)]]>
+			</Statement>
+		</Rule>
+		<Rule name="obj.overRatio">
+			<description></description>
+			<Statement>
+				<![CDATA[#转向所得率计算
+L_CUT_TIMES2=int((W_REAL-1.4)/(L+0.4))
+W_CUT_TIMES2=int((L_REAL-1.4)/(W+0.4))
+H_CUT_TIMES2=int((H_REAL-1.3)/(H+0.3))
+OUT_PIECE_COUNT2=L_CUT_TIMES2*W_CUT_TIMES2*H_CUT_TIMES2
+if (OUT_PIECE_COUNT2 > Quantity):
+	OverRatio=Quantity*L*W*H/(L_REAL*W_REAL*H_REAL)
+else:
+	OverRatio=OUT_PIECE_COUNT2*L*W*H/(L_REAL*W_REAL*H_REAL)
+OverRatio = str(round(OverRatio*100, 2))+'%'
+obj.setValue('overRatio', OverRatio)]]>
+			</Statement>
+		</Rule>
+		<Rule name="obj.rotate">
+			<description>obj.rotate</description>
+			<Statement>
+				<![CDATA[obj.setValue('rotate', str(obj.value('overRatio')) > str(obj.value('ratio')) and '需要转向' or '不需要转向')]]>
+			</Statement>
+		</Rule>
+	</Rules>
+	<ExtendModules/>
+</Knowledge>

@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 
+	Knowledge ：知识定义 
+	name ：名称
+	id： ID 
+	description：说明 
+	version： 版本 
+	pixfilename：附图	
+-->
+<Knowledge name="产品工艺" id="100" description="工艺1" version="工艺2" pixfilename="./tst.png">
+	<!-- 文件版本 -->
+	<FileVersion>1.0</FileVersion>
+	<!-- 
+		InputParams ：输入参数定义
+	-->
+	<InputParams>
+		<!-- 
+			Param： 单个参数定义 :name 参数名称， nullallowed：参数值是否可以为空
+			
+			description :参数说明
+			max ：最大值
+			min ：最小值
+			type： 值类型，可以是 int float str， 如果是str（），则最大最小值无意义
+			value: 参数值
+		-->
+		<Param	 name="l" nullallowed="true">
+			<description></description>
+			<max></max>
+			<min></min>
+			<type></type>
+			<value>6</value>
+		</Param>
+		<Param name="w" nullallowed="false">
+			<description></description>
+			<max></max>
+			<min></min>
+			<type></type>
+			<value>8</value>
+		</Param>
+	</InputParams>
+	<!--
+		Limiters ： 运行条件限制，即不符合条件的输入，提示用户
+	-->
+	<Limiters>
+		<!--
+			Limiter ：运行条件
+				description：条件说明
+				Statement：条件语句
+		-->
+		<Limiter name="Limit">
+			<description>Limit</description>
+			<Statement>
+				<![CDATA[L>=9 and L<=18
+W>=6 and W<=13]]>
+			</Statement>
+		</Limiter>
+	</Limiters>
+	<!-- 
+		Output： 输出的定义，包含以下
+			OutputParams：输出参数
+			OutputObjects ：输出对象
+	-->
+	<Output>
+		<!--
+			OutputParams ：输出参数
+		-->
+		<OutputParams>
+			<!--
+				Param： 输出参数定义，name输出参数名称
+				
+				description ：说明
+				type： 值类型
+			-->
+			<Param name="o">
+				<description></description>
+				<type>float</type>
+			</Param>
+		</OutputParams>
+		<!--
+			OutputObjects:输出对象
+		-->
+		<OutputObjects>
+			<!--
+				Object : 输出对象的定义
+					name：对象名称
+					type：对象类型
+			-->
+			<Object name="y" type="CXMaterial">
+				<!--
+					对象成员
+						matNo
+						。。。
+						matSpec
+						
+						type对应成员的属性，可以是int str float 
+						child :是子对象的声明，如果没有子对象，则这个标签不存在
+				-->
+				<matNo type="int"></matNo>
+				<matName type="str"></matName>
+				<matSpec type="float"></matSpec>
+				<child>
+					<Object name="y2" type="CXMaterial">
+						<matNo type="int"></matNo>
+						<matName type="str"></matName>
+						<matSpec type="float"></matSpec>
+					</Object>
+				</child>
+			</Object>
+		</OutputObjects>
+	</Output>
+	<!-- 
+		Rules:规则的定义
+		
+		可以是：
+			1、中间变量的定义、计算
+			2、输出参数的计算
+			3、对象成员属性的计算
+	-->
+	<Rules>
+		<!--
+			Rule ：具体规则，
+				name：规则名称
+				
+				description：规则的说明
+				Statement：规则语句， 需符合脚本的语法规范，
+				规则都放在 <![CDATA[ 指定的文本中
+		-->
+		<Rule name="matNO">
+			<description>matNO</description>
+			<Statement> 
+				<![CDATA[y.setValue('matNo', str(l*w))]]>
+			</Statement>
+		</Rule>
+		<Rule name="matName">
+			<description>matName</description>
+			<Statement>
+				<![CDATA[y.setValue('matName', str(l ** 5))]]>
+			</Statement>
+		</Rule>
+	</Rules>
+	<!--
+		ExtendModules:扩展模块的定义
+	-->
+	<ExtendModules>
+		<!--
+			Module:模块的定义
+				name:模块名称
+				description：模块的说明
+			
+			假如需要使用名为WMATH的模块，则只需定义如下语句，就可以在规则中直接
+			使用该模块的函数
+		-->
+		<Module name="WMATH" description="MATH EXTEND"/>
+	</ExtendModules>
+</Knowledge>

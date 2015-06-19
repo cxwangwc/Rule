@@ -1,0 +1,47 @@
+﻿Build started 2015-6-18 13:25:03.
+Project "D:\TestWC\Workspace\qapp\qapp\qapp.vcxproj" on node 2 (build target(s)).
+C:\Program Files\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(299,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+InitializeBuildStatus:
+  Creating "Release\规则定义工具.unsuccessfulbuild" because "AlwaysCreate" was specified.
+CustomBuild:
+  All outputs are up-to-date.
+ClCompile:
+  All outputs are up-to-date.
+  All outputs are up-to-date.
+ResourceCompile:
+  All outputs are up-to-date.
+Link:
+  C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"..\..\Release\规则定义工具.exe" /NOLOGO /LIBPATH:D:\TestWC\Qt5.4\5.4\msvc2010_opengl\lib /LIBPATH:..\..\Release qtmain.lib Qt5Core.lib Qt5Gui.lib Qt5Widgets.lib FlowDLL.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\规则定义工具.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /PDB:"D:\TestWC\Workspace\Release\规则定义工具.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"..\..\Release\规则定义工具.lib" /MACHINE:X86 Release\caxa.res
+  Release\cxcentral.obj
+  Release\cxdialog.obj
+  Release\cxhelpdialog.obj
+  Release\cxhighlighter.obj
+  Release\cxknowledgemanager.obj
+  Release\cxlistwidget.obj
+  Release\cxmainwindow.obj
+  Release\cxobjectinit.obj
+  Release\cxtextedit.obj
+  Release\qrc_caxa.obj
+  Release\moc_cxcentral.obj
+  Release\moc_cxdialog.obj
+  Release\moc_cxhighlighter.obj
+  Release\moc_cxknowledgemanager.obj
+  Release\moc_cxlistwidget.obj
+  Release\moc_cxmainwindow.obj
+  Release\moc_cxtextedit.obj
+  Release\moc_cxtree.obj
+  Release\main.obj
+  Release\cxtree.obj
+     Creating library ..\..\Release\规则定义工具.lib and object ..\..\Release\规则定义工具.exp
+LINK : warning LNK4232: name 规则定义工具.exe contains non-ASCII characters, DLL may not load on system with ANSI codepage other than 936
+  qapp.vcxproj -> D:\TestWC\Workspace\qapp\qapp\..\..\Release\规则定义工具.exe
+Manifest:
+  C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"..\..\Release\规则定义工具.exe;#1" /manifest "Release\规则定义工具.exe.intermediate.manifest"
+FinalizeBuildStatus:
+  Deleting file "Release\规则定义工具.unsuccessfulbuild".
+  Touching "Release\规则定义工具.lastbuildstate".
+Done Building Project "D:\TestWC\Workspace\qapp\qapp\qapp.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:03.60

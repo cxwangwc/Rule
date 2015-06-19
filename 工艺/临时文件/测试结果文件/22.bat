@@ -1,0 +1,1 @@
+"CDRAFT_P.exe"  "D:\\TestWC\\Workspace\\工艺\\临时文件\\测试结果文件\\八边形.xml"

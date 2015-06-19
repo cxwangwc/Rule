@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<REPORT RGLFileName = "机械加工工序卡片（八边）">
+  <HEAD>
+    <!-- 公共信息 -->
+    <!-- 列节点，属性名name(列名)  -->
+    <!-- 节点值为单元格内容  -->
+    <CommonNode name="产品编码"></CommonNode>
+    <CommonNode name="毛坯外形尺寸"></CommonNode>
+    <CommonNode name="产品名称"></CommonNode>
+    <CommonNode name="零件图号"></CommonNode>
+  </HEAD>
+  <!-- 卡片节点，属性CardName(卡片名)，属性CardTemplateName（卡片模板名），属性CntCardTmpName(卡片续页模板名),属性TypeID（卡片类型ID）,属性RecordNum（对应的行记录号）  -->
+  <CARD CardName="机械加工工序卡片（八边）" CardTemplateName="机械加工工序卡片（八边）" TypeID="10" CtnCardTmpName="">
+    <!-- 单列节点，属性TableName（表区名）  -->
+    <HEAD>
+      <!-- 非表区内容，属性name（属性名），节点值为单元格内容  -->
+      <COLUMN name="页码">
+        <CELL Row="0">1</CELL>
+      </COLUMN>
+      <COLUMN name="页数">
+        <CELL Row="0">1</CELL>
+      </COLUMN>
+      <COLUMN name="L1">
+        <CELL Row="0">0</CELL>
+      </COLUMN>
+      <COLUMN name="L2">
+        <CELL Row="0">0</CELL>
+      </COLUMN>
+      <COLUMN name="L3">
+        <CELL Row="0">0</CELL>
+      </COLUMN>
+      <COLUMN name="L4">
+        <CELL Row="0">0</CELL>
+      </COLUMN>
+      <COLUMN name="L5">
+        <CELL Row="0">0</CELL>
+      </COLUMN>
+      <COLUMN name="W1">
+        <CELL Row="0">0</CELL>
+      </COLUMN>
+      <COLUMN name="W2">
+        <CELL Row="0">0</CELL>
+      </COLUMN>
+      <COLUMN name="W3">
+        <CELL Row="0">0</CELL>
+      </COLUMN>
+      <COLUMN name="H">
+        <CELL Row="0">0</CELL>
+      </COLUMN>
+      <COLUMN name="R">
+        <CELL Row="0">0</CELL>
+      </COLUMN>
+      <COLUMN name="备注">
+        <CELL Row="0">0</CELL>
+      </COLUMN>
+      <COLUMN name="其他说明">
+        <CELL Row="0">0</CELL>
+      </COLUMN>
+      <COLUMN name="涂层种类">
+        <CELL Row="0">环保彩锌</CELL>
+      </COLUMN>
+      <COLUMN name="耐蚀性">
+        <CELL Row="0">盐雾48h</CELL>
+      </COLUMN>
+      <COLUMN name="涂层厚度">
+        <CELL Row="0">5-10μm</CELL>
+      </COLUMN>
+    </HEAD>
+    <!-- 表节点，属性TableName(表区名)  -->
+    <TABLE TableName="TABLE0">
+      <!-- 行记录节点（包含多列），属性RecordNum(行记录号)  -->
+      <LINERECORD RecordNum="0">
+        <COLUMN name="工序号">1</COLUMN>
+        <COLUMN name="工序">切片</COLUMN>
+        <COLUMN name="生产车间">加工车间</COLUMN>
+        <COLUMN name="工序内容"></COLUMN>
+        <COLUMN name="设备名称">J5060C切片机</COLUMN>
+        <COLUMN name="夹具名称">直角模型</COLUMN>
+        <COLUMN name="主轴转速"></COLUMN>
+        <COLUMN name="砂轮/刀具轴向跳动"></COLUMN>
+        <COLUMN name="砂轮/刀具径向跳动"></COLUMN>
+        <COLUMN name="每次进刀量"></COLUMN>
+        <COLUMN name="刀口补偿量"></COLUMN>
+        <COLUMN name="切割厚度"></COLUMN>
+        <COLUMN name="切割片数"></COLUMN>
+        <COLUMN name="片厚设置"></COLUMN>
+        <COLUMN name="冷却液流量"></COLUMN>
+        <COLUMN name="线切割电流"></COLUMN>
+        <COLUMN name="线切割电压"></COLUMN>
+        <COLUMN name="线切割速度"></COLUMN>
+      </LINERECORD>
+    </TABLE>
+  </CARD>
+</REPORT>

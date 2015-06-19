@@ -1,0 +1,54 @@
+﻿Build started 2015-6-19 11:13:57.
+Project "D:\TestWC\Workspace\qapp\qapp\qapp.vcxproj" on node 2 (build target(s)).
+C:\Program Files\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(299,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+InitializeBuildStatus:
+  Creating "Debug\规则定义工具.unsuccessfulbuild" because "AlwaysCreate" was specified.
+CustomBuild:
+  All outputs are up-to-date.
+ClCompile:
+  C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I.\GeneratedFiles /I. /ID:\TestWC\Qt5.4\5.4\msvc2010_opengl\include /I.\GeneratedFiles\Debug /ID:\TestWC\Qt5.4\5.4\msvc2010_opengl\include\QtCore /ID:\TestWC\Qt5.4\5.4\msvc2010_opengl\include\QtGui /ID:\TestWC\Qt5.4\5.4\msvc2010_opengl\include\QtWidgets /I"D:\Program Files\python3.4\include" /I..\..\FlowDLL /Zi /nologo /W1 /WX- /Od /Oy- /D UNICODE /D WIN32 /D WIN64 /D QT_DLL /D QT_CORE_LIB /D QT_GUI_LIB /D QT_WIDGETS_LIB /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt cxtree.cpp
+  cxtree.cpp
+  All outputs are up-to-date.
+ResourceCompile:
+  C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /l"0x0409" /nologo /fo"Debug\caxa.res" caxa.rc 
+ManifestResourceCompile:
+  All outputs are up-to-date.
+Link:
+  C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"..\..\Debug\\规则定义工具.exe" /INCREMENTAL /NOLOGO /LIBPATH:D:\TestWC\Qt5.4\5.4\msvc2010_opengl\lib /LIBPATH:"D:\Program Files\python3.4\lib" /LIBPATH:..\..\Debug qtmaind.lib Qt5Cored.lib Qt5Guid.lib Qt5Widgetsd.lib FlowDll.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\规则定义工具.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\TestWC\Workspace\Debug\规则定义工具.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"..\..\Debug\规则定义工具.lib" /MACHINE:X86 Debug\caxa.res
+  "Debug\规则定义工具.exe.embed.manifest.res"
+  Debug\cxcentral.obj
+  Debug\cxdialog.obj
+  Debug\cxhelpdialog.obj
+  Debug\cxhighlighter.obj
+  Debug\cxknowledgemanager.obj
+  Debug\cxlistwidget.obj
+  Debug\cxmainwindow.obj
+  Debug\cxobjectinit.obj
+  Debug\cxtextedit.obj
+  Debug\moc_cxcentral.obj
+  Debug\moc_cxdialog.obj
+  Debug\moc_cxhighlighter.obj
+  Debug\moc_cxknowledgemanager.obj
+  Debug\moc_cxlistwidget.obj
+  Debug\moc_cxmainwindow.obj
+  Debug\moc_cxtextedit.obj
+  Debug\moc_cxtree.obj
+  Debug\qrc_caxa.obj
+  Debug\main.obj
+  Debug\cxtree.obj
+     Creating library ..\..\Debug\规则定义工具.lib and object ..\..\Debug\规则定义工具.exp
+LINK : warning LNK4232: name 规则定义工具.exe contains non-ASCII characters, DLL may not load on system with ANSI codepage other than 936
+Manifest:
+  C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\规则定义工具.exe.embed.manifest" /manifest "Debug\规则定义工具.exe.intermediate.manifest"
+  All outputs are up-to-date.
+LinkEmbedManifest:
+  All outputs are up-to-date.
+  qapp.vcxproj -> D:\TestWC\Workspace\qapp\qapp\..\..\Debug\规则定义工具.exe
+FinalizeBuildStatus:
+  Deleting file "Debug\规则定义工具.unsuccessfulbuild".
+  Touching "Debug\规则定义工具.lastbuildstate".
+Done Building Project "D:\TestWC\Workspace\qapp\qapp\qapp.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:15.26

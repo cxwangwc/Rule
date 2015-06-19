@@ -1,0 +1,129 @@
+在这个定义工具中会经常用到的内容：
+
+1、变量的计算、赋值
+	
+	在定义完所需输入变量之后，就可以计算这些由输入变量决定的结果，计算方式很简单。
+	如切削工艺表面积的计算：
+		Surface = (L*W-pow((2*RADIUS),2)+pi*pow(RADIUS,2))*2 + (L+W-4*RADIUS+pi*RADIUS)*2*H
+	表面积由输入参数得到
+	而总面积的计算：
+		GrossArea = Quantity*Surface/10000
+	总面积除了需要输出参数数量之外，还需表面积Surface，所以在定义规则时，需要考虑顺序。否则会出现
+	错误的结果。
+	
+	主要分两种情况：
+	1）该变量需要做为结果来输出
+		需要把此参数在输出结果中先定义好，然后在规则中定义该参数的计算规则，在定义该参数时需要考虑参
+	数的类型，我们推荐所有的输出参数都以字符串(即str)形式输出，因为相对一个单纯的数字而言，字符串传达的
+	信息要多的多：
+	如切削工艺的所得率计算，如需以浮点数形式输出，在定义时选择float，在定义规则时：
+		if (OUT_PIECE_COUNT > Quantity):
+			ratio=Quantity*L*W*H/(L_REAL*W_REAL*H_REAL)
+		else:
+			ratio=OUT_PIECE_COUNT*L*W*H/(L_REAL*W_REAL*H_REAL)
+	最后界面会得到形如：
+		ratio : 0.33900000
+	
+	如选择str类型，我们就可以在计算出结果之后，以百分比的形式，保留小数点后两位显示：
+		if (OUT_PIECE_COUNT > Quantity):
+			ratio=Quantity*L*W*H/(L_REAL*W_REAL*H_REAL)
+		else:
+			ratio=OUT_PIECE_COUNT*L*W*H/(L_REAL*W_REAL*H_REAL)
+		ratio = str(round(ratio*100, 2))+'%'
+	以字符串形式输出：
+	ratio : 33.9%
+		
+	需要注意的是，数字类型转换为str类型需要调用str函数来完成转换，字符串的拼接直接使用 '+' 即可
+		
+	2）该变量不需要作为结果来输出
+	
+	通常这种类型的变量，是作为产生某个或某几个输出结果的依据，而这些变量的来源是：可能会是两种情况：
+	a）一个常量或通过输入参数得到的结果
+		针对这种情况，我们可以把这些中间参数的规则都定义在一起，如切削工艺中间参数和常量的定义：
+		Surface=(L*W-pow((2*RADIUS),2)+pi*pow(RADIUS,2))*2 + (L+W-4*RADIUS+pi*RADIUS)*2*H
+		Volume=(L*W-pow(2*RADIUS, 2) + pi*pow(RADIUS,2))*H
+		GrossArea = Quantity*Surface/10000
+		Weight=Volume*7.5/1000
+		TotalWeight=Quantity*Weight/1000
+		Coatingtype='环保彩锌'
+		CoatingThick=6
+		SmogRequire='48h, 7'
+		BindingForce='有'
+	b）依赖某些输出结果
+		这种情况需要注意规则定义的次序
+	
+	3）输出对象的操作
+	
+	因为对象的可扩展性，如需对某个对象的某个成员赋值，需使用
+		setValue函数来完成对象成员的赋值，不能使用.操作符
+		
+	假设有一个工步对象step1(CxStep),它的成员有content(str), name(str), id(int)等：
+		如需对该对象的成员赋值，则需使用如下方式
+		
+		step1.setValue('content', 'step1的内容')
+		step1.setValue('name', '第一个工步')
+		step1.setValue('id', 1)
+		
+
+2、规则的定义
+	因为python脚本的特性，空白在python是非常重要的，行首的空白是最重要的，又称为缩进。行首的空白（空格和制表符）用来决定逻辑
+	行的缩进层次，从而决定语句分组。这意味着同一层次的语句必须有相同的缩进，每一组这样的语句称为一个块。
+	
+　　注意：不要混合使用空格和制表符来缩进，因为在跨越不同的平台时无法正常工作。
+	为了确保规则的正确性，推荐在定义规则时，均使用制表符(Tab键)来控制缩进。
+	
+	1）当然，只有在需要用到条件或循环时才需要控制缩进，所有的条件或循环表达式之后，必须以':'结束，再定义执行语句，如执行语句为空，
+	需要使用 pass关键字定义空语句
+	其他情况只需顺序定义，保证每行一条执行语句即可，同一行不能出现多条语句
+	
+	
+	如切削工艺下偏差的计算：
+	if (H_CAL_UPPER-0.04 > H_LOWER + 0.06):
+		H_CAL_LOWER=round(H_CAL_UPPER-0.04, 2)
+	elif (H_CAL_UPPER - H_LOWER >= 0.07):
+		H_CAL_LOWER=round(H_CAL_UPPER-0.03, 2)
+	else:
+		H_CAL_LOWER=H_LOWER+0.03
+	这种情况在定义规则时，需要控制缩进，如一个条件表达式之后多条语句要执行, 可如下定义：
+	if (condition):
+		statement1
+		statement2
+		...
+		
+	2）不需要用到条件或循环表达式的，如下顺序计算规则定义即可：
+	L_RECOMMEND=round((L+0.4)*L_CUT_TIMES+1.4,1)
+	W_RECOMMEND=round((W+0.4)*W_CUT_TIMES+1.4,1)
+	H_RECOMMEND=round((H+0.3)*H_CUT_TIMES+1.3,1)
+	Recommond = '推荐毛坯长度:' + str(L_RECOMMEND) + '\n推荐毛坯宽度:' + str(W_RECOMMEND) + '\n推荐毛坯厚度:' + str(H_RECOMMEND)
+		
+	3）python的注释：
+	单行注释采用# 或直接字符串占一行
+	多好注释通常采用三个'起始，三个'截止的字符串信息
+	在定义规则时，为了阅读方便，可以在规则语句中添加注释
+	如：
+	#转向所得率计算，即把L和W俩只交换，计算所得率
+	L_CUT_TIMES2=int((W_REAL-1.4)/(L+0.4))
+	W_CUT_TIMES2=int((L_REAL-1.4)/(W+0.4))
+	H_CUT_TIMES2=int((H_REAL-1.3)/(H+0.3))
+	OUT_PIECE_COUNT2=L_CUT_TIMES2*W_CUT_TIMES2*H_CUT_TIMES2
+	if (OUT_PIECE_COUNT2 > Quantity):
+		OverRatio=Quantity*L*W*H/(L_REAL*W_REAL*H_REAL)
+	else:
+		OverRatio=OUT_PIECE_COUNT2*L*W*H/(L_REAL*W_REAL*H_REAL)
+	OverRatio = str(round(OverRatio*100, 2))+'%'
+
+3、测试定义的正确性
+	
+	在定义完参数和规则之后，当按下F5或点击菜单运行时，会形成一个临时的脚本文件存储这些参数和规则，在脚本中由参数声明、setParam函数和startCalculate函数
+	组成，当然，用户不需要关心这些；形成这个脚本之后，开始准备执行，分为两个阶段：
+	
+	1） 导入这个脚本（运行前）
+	此阶段出现错误的原因是：(SyntaxError)
+		规则定义不对，如括号不匹配，条件表达式不匹配等，当出现这个错误时，界面会弹出在哪一行报的错，用户可依据此信息，在脚本编辑器中修改，
+	修改完毕之后，右键点击执行菜单来验证
+	
+	2）执行出错（运行时）
+	这种情况可能是：(TypeError等)
+		参数未定义或计算时类型不匹配等原因，用户可依据弹出的提示信息来检查并修改规则，再重新验证
+	
+	

@@ -1,0 +1,90 @@
+在这个定义工具中会经常用到的内容：
+
+语法简介：
+	a) 变量类型 
+		int     : 整数，
+		float   ：小数
+		str     ：字符串（即文本）
+
+	b)变量的赋值：
+	
+		使用变量时不需要声明类型
+		
+		假设有四个小数类型的变量 L、W、H、SURFACE,需要分别对他们赋上30、20、50的值，而
+	SURFACE等于它们三者的乘积，则赋值语句如下，每行只能对一个变量赋值，即在给变量赋值之后，
+	必须按回车键，再给别的变量赋值，不能写在同一行，
+		L=30
+		W=20
+		H=50
+		SURFACE=L*W*H
+		
+		同理，假如有文本类型变量ST和整数变量IT，对他们的赋值语句如下：
+		ST = '测试文本' 
+		文本类型的变量单引号和双引号包围都是一样的，即上述赋值语句与
+		ST = "测试文本" 功能一样
+		IT = 100
+		
+	c)条件语句的书写
+		
+		假如有两个变量厚度上偏差H_UPPER和厚度下偏差H_LOWER，需要计算厚度实际的上偏差
+		H_CAL_UPPER，如果下偏差-上偏差小于0.08，则H_CAL_UPPER=roundup(H_UPPER+0.02, 2)
+		否则H_CAL_UPPER=roundup((H_UPPER+H_LOWER)/2+0.06, 2)，则条件语句书写如下：
+		
+		if (H_UPPER-H_LOWER < 0.08):
+			H_CAL_UPPER=roundup(H_UPPER+0.02, 2)
+		else:
+			H_CAL_UPPER=roundup((H_UPPER+H_LOWER)/2+0.06, 2)
+		
+		其中条件表达式（上面的if (H_UPPER-H_LOWER < 0.08):和else：）必须以冒号结尾，计算语句
+		必须先按下tab键，再输入语句，需严格遵循脚本的缩进语法。
+		
+	d)常用函数
+		函数的使用是，函数名称(参数值)
+	如需计算x的正弦，则 使用 sin(x)即可
+	其他函数的使用都类似
+	
+		常量pi ： 即π，值= 3.141592...
+		
+		常量e : 值 = 2.718281...
+	
+		ceil(x) 
+		返回数的上入整数
+
+		copysign(x, y) 
+		返回x的绝对值，但是符号是y的符号
+		copysign(1.0, -0.0)返回 -1.0.
+
+		fabs(x) 
+		返回x的绝对值
+
+		factorial(x) 
+		Return x factorial. Raises ValueError if x is not integral or is negative.
+
+		floor(x) 
+		返回数的下舍整数
+
+		fmod(x, y) 
+		返回x%y
+
+		fsum(iterable) 
+		返回序列iterable的和
+
+		round(number[, ndigits])
+		根据给定的精度对数字进行四舍五入 如:round(3.1415, 2) 返回3.14
+
+		exp(x) 
+		e的x次幂
+
+		log(x[, base]) 
+		一个参数时，返回e的对数，两个参数时，返回base的对数
+
+		log10(x) 
+		返回以10为底的x的对数
+
+		pow(x, y) 
+		返回x的y次幂
+
+		sqrt(x) 
+		x的平方根
+	
+	

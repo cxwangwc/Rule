@@ -1,0 +1,1 @@
+"CDRAFT_P.exe"  "D:/TestWC/Workspace/工艺/临时文件/模板/xxcapp.xml"

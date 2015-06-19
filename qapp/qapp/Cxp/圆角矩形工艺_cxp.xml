@@ -1,0 +1,480 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Knowledge name="圆角矩形" id="{82e37a1d-e92c-4409-b921-ee4c24bff1f8}" description="圆角矩形" version="1.0" pixfilename="D:/TestWC/qapp/qapp/caxa.png">
+	<FileVersion>1.0</FileVersion>
+	<InputParams>
+		<Param name="L" nullallowed="true">
+			<min></min>
+			<max></max>
+			<value>5.54</value>
+			<description>长度</description>
+			<type>float</type>
+		</Param>
+		<Param name="L_UPPER" nullallowed="true">
+			<min></min>
+			<max></max>
+			<value>0.01</value>
+			<description>长度上偏差</description>
+			<type>float</type>
+		</Param>
+		<Param name="L_LOWER" nullallowed="true">
+			<min></min>
+			<max></max>
+			<value>-0.03</value>
+			<description>长度下偏差</description>
+			<type>int</type>
+		</Param>
+		<Param name="W" nullallowed="true">
+			<min></min>
+			<max></max>
+			<value>4.17</value>
+			<description>宽度</description>
+			<type>float</type>
+		</Param>
+		<Param name="W_UPPER" nullallowed="true">
+			<min></min>
+			<max></max>
+			<value>0.01</value>
+			<description>宽度上偏差</description>
+			<type>float</type>
+		</Param>
+		<Param name="W_LOWER" nullallowed="true">
+			<min></min>
+			<max></max>
+			<value>-0.03</value>
+			<description>宽度下偏差</description>
+			<type>float</type>
+		</Param>
+		<Param name="H" nullallowed="true">
+			<min></min>
+			<max></max>
+			<value>0.75</value>
+			<description>厚度</description>
+			<type>float</type>
+		</Param>
+		<Param name="H_UPPER" nullallowed="true">
+			<min></min>
+			<max></max>
+			<value>0.02</value>
+			<description>厚度上偏差</description>
+			<type>float</type>
+		</Param>
+		<Param name="H_LOWER" nullallowed="true">
+			<min></min>
+			<max></max>
+			<value>-0.03</value>
+			<description>厚度下偏差</description>
+			<type>float</type>
+		</Param>
+		<Param name="RADIUS" nullallowed="true">
+			<min></min>
+			<max></max>
+			<value>1.2</value>
+			<description>圆角半径</description>
+			<type>float</type>
+		</Param>
+		<Param name="RADIUS_UPPER" nullallowed="true">
+			<min></min>
+			<max></max>
+			<value>0.3</value>
+			<description>圆角半径上偏差</description>
+			<type>float</type>
+		</Param>
+		<Param name="RADIUS_LOWER" nullallowed="true">
+			<min></min>
+			<max></max>
+			<value>0</value>
+			<description>圆角半径下偏差</description>
+			<type>float</type>
+		</Param>
+		<Param name="Quantity" nullallowed="true">
+			<min></min>
+			<max></max>
+			<value>2000</value>
+			<description>数量</description>
+			<type>int</type>
+		</Param>
+		<Param name="excelName" nullallowed="true">
+			<min></min>
+			<max></max>
+			<value>D:\\TestWC\\Workspace\\工艺\\毛坯库\\blank2.xlsx</value>
+			<description>毛坯库保存路径</description>
+			<type>str</type>
+		</Param>
+	</InputParams>
+	<Limiters>
+		<Limiter name="Limit">
+			<description>Limit</description>
+			<Statement>
+				<![CDATA[L>=3 and L<=20
+W>=H and W<=L
+H>=0.6and H<=0.8
+RADIUS>=0.35 and RADIUS<=2 and RADIUS<=(W-0.7)/2
+abs(L_UPPER-L_LOWER)>=0.03
+abs(W_UPPER-W_LOWER)>=0.03
+abs(H_UPPER-H_LOWER)>=0.03]]>
+			</Statement>
+		</Limiter>
+	</Limiters>
+	<Output>
+		<OutputParams>
+			<Param name="页数">
+				<description></description>
+				<type>str</type>
+			</Param>
+			<Param name="页码">
+				<description></description>
+				<type>str</type>
+			</Param>
+			<Param name="L">
+				<description>L</description>
+				<type>str</type>
+			</Param>
+			<Param name="W">
+				<description>W</description>
+				<type>str</type>
+			</Param>
+			<Param name="H">
+				<description>H</description>
+				<type>str</type>
+			</Param>
+			<Param name="R">
+				<description>R</description>
+				<type>str</type>
+			</Param>
+			<Param name="备注">
+				<description>备注</description>
+				<type>str</type>
+			</Param>
+			<Param name="涂层种类">
+				<description>涂层种类</description>
+				<type>str</type>
+			</Param>
+			<Param name="耐蚀性">
+				<description>耐蚀性</description>
+				<type>str</type>
+			</Param>
+			<Param name="涂层厚度">
+				<description>涂层厚度</description>
+				<type>str</type>
+			</Param>
+			<Param name="毛坯外形尺寸">
+				<description>毛坯外形尺寸</description>
+				<type>str</type>
+			</Param>
+			<Param name="备注1">
+				<description>备注1</description>
+				<type>str</type>
+			</Param>
+			<Param name="其他说明">
+				<description>其他说明</description>
+				<type>str</type>
+			</Param>
+		</OutputParams>
+		<OutputObjects>
+			<Object name="step1" type="CXObject">
+				<name1 type="str"></name1>
+				<name2 type="str"></name2>
+				<name3 type="str"></name3>
+				<name4 type="str"></name4>
+				<name5 type="str"></name5>
+				<name6 type="str"></name6>
+				<name7 type="str"></name7>
+				<name8 type="str"></name8>
+				<name9 type="str"></name9>
+				<name10 type="str"></name10>
+				<name11 type="str"></name11>
+				<name12 type="str"></name12>
+				<name13 type="str"></name13>
+				<name14 type="str"></name14>
+			</Object>
+			<Object name="step2" type="CXObject">
+				<name1 type="str"></name1>
+				<name2 type="str"></name2>
+				<name3 type="str"></name3>
+				<name4 type="str"></name4>
+				<name5 type="str"></name5>
+				<name6 type="str"></name6>
+				<name7 type="str"></name7>
+				<name8 type="str"></name8>
+				<name9 type="str"></name9>
+				<name10 type="str"></name10>
+				<name11 type="str"></name11>
+				<name12 type="str"></name12>
+				<name13 type="str"></name13>
+				<name14 type="str"></name14>
+			</Object>
+			<Object name="step3" type="CXObject">
+				<name1 type="str"></name1>
+				<name2 type="str"></name2>
+				<name3 type="str"></name3>
+				<name4 type="str"></name4>
+				<name5 type="str"></name5>
+				<name6 type="str"></name6>
+				<name7 type="str"></name7>
+				<name8 type="str"></name8>
+				<name9 type="str"></name9>
+				<name10 type="str"></name10>
+				<name11 type="str"></name11>
+				<name12 type="str"></name12>
+				<name13 type="str"></name13>
+				<name14 type="str"></name14>
+			</Object>
+			<Object name="step4" type="CXObject">
+				<name1 type="str"></name1>
+				<name2 type="str"></name2>
+				<name3 type="str"></name3>
+				<name4 type="str"></name4>
+				<name5 type="str"></name5>
+				<name6 type="str"></name6>
+				<name7 type="str"></name7>
+				<name8 type="str"></name8>
+				<name9 type="str"></name9>
+				<name10 type="str"></name10>
+				<name11 type="str"></name11>
+				<name12 type="str"></name12>
+				<name13 type="str"></name13>
+				<name14 type="str"></name14>
+			</Object>
+			<Object name="step5" type="CXObject">
+				<name1 type="str"></name1>
+				<name2 type="str"></name2>
+				<name3 type="str"></name3>
+				<name4 type="str"></name4>
+				<name5 type="str"></name5>
+				<name6 type="str"></name6>
+				<name7 type="str"></name7>
+				<name8 type="str"></name8>
+				<name9 type="str"></name9>
+				<name10 type="str"></name10>
+				<name11 type="str"></name11>
+				<name12 type="str"></name12>
+				<name13 type="str"></name13>
+				<name14 type="str"></name14>
+			</Object>
+			<Object name="step6" type="CXObject">
+				<name1 type="str"></name1>
+				<name2 type="str"></name2>
+				<name3 type="str"></name3>
+				<name4 type="str"></name4>
+				<name5 type="str"></name5>
+				<name6 type="str"></name6>
+				<name7 type="str"></name7>
+				<name8 type="str"></name8>
+				<name9 type="str"></name9>
+				<name10 type="str"></name10>
+				<name11 type="str"></name11>
+				<name12 type="str"></name12>
+				<name13 type="str"></name13>
+				<name14 type="str"></name14>
+			</Object>
+			<Object name="step7" type="CXObject">
+				<name1 type="str"></name1>
+				<name2 type="str"></name2>
+				<name3 type="str"></name3>
+				<name4 type="str"></name4>
+				<name5 type="str"></name5>
+				<name6 type="str"></name6>
+				<name7 type="str"></name7>
+				<name8 type="str"></name8>
+				<name9 type="str"></name9>
+				<name10 type="str"></name10>
+				<name11 type="str"></name11>
+				<name12 type="str"></name12>
+				<name13 type="str"></name13>
+				<name14 type="str"></name14>
+			</Object>
+		</OutputObjects>
+	</Output>
+	<Rules>
+		<Rule name="Surface">
+			<description>Surface</description>
+			<Statement>
+				<![CDATA[Surface=(L*W-pow((2*RADIUS),2)+pi*pow(RADIUS,2))*2 + (L+W-4*RADIUS+pi*RADIUS)*2*H]]>
+			</Statement>
+		</Rule>
+		<Rule name="Volume">
+			<description>Volume</description>
+			<Statement>
+				<![CDATA[Volume=(L*W-pow(2*RADIUS, 2) + pi*pow(RADIUS,2))*H]]>
+			</Statement>
+		</Rule>
+		<Rule name="Weight">
+			<description>Weight</description>
+			<Statement>
+				<![CDATA[Weight=Volume*7.5/1000]]>
+			</Statement>
+		</Rule>
+		<Rule name="GrossArea">
+			<description>GrossArea</description>
+			<Statement>
+				<![CDATA[GrossArea=Quantity*Surface/10000]]>
+			</Statement>
+		</Rule>
+		<Rule name="TotalWeight">
+			<description>TotalWeight</description>
+			<Statement>
+				<![CDATA[TotalWeight=Quantity*Weight/1000]]>
+			</Statement>
+		</Rule>
+		<Rule name="Coatingtype">
+			<description>Coatingtype</description>
+			<Statement>
+				<![CDATA[Coatingtype='环保彩锌']]>
+			</Statement>
+		</Rule>
+		<Rule name="CoatingThick">
+			<description>CoatingThick</description>
+			<Statement>
+				<![CDATA[CoatingThick=6]]>
+			</Statement>
+		</Rule>
+		<Rule name="SmogRequire">
+			<description>SmogRequire</description>
+			<Statement>
+				<![CDATA[SmogRequire='48h, 7']]>
+			</Statement>
+		</Rule>
+		<Rule name="BindingForc">
+			<description>BindingForc</description>
+			<Statement>
+				<![CDATA[BindingForce='有']]>
+			</Statement>
+		</Rule>
+		<Rule name="L_CAL_UPPER">
+			<description>L_CAL_UPPER</description>
+			<Statement>
+				<![CDATA[L_CAL_UPPER=roundup((L_UPPER+L_LOWER)/2 + 0.04, 2)]]>
+			</Statement>
+		</Rule>
+		<Rule name="L_CAL_LOWER">
+			<description>L_CAL_LOWER</description>
+			<Statement>
+				<![CDATA[L_CAL_LOWER=L_CAL_UPPER-0.03]]>
+			</Statement>
+		</Rule>
+		<Rule name="W_CAL_UPPER">
+			<description>W_CAL_UPPER</description>
+			<Statement>
+				<![CDATA[W_CAL_UPPER=roundup((W_UPPER+W_LOWER)/2 + 0.04, 2)]]>
+			</Statement>
+		</Rule>
+		<Rule name="W_CAL_LOWER">
+			<description>W_CAL_LOWER</description>
+			<Statement>
+				<![CDATA[W_CAL_LOWER=W_LOWER-0.03]]>
+			</Statement>
+		</Rule>
+		<Rule name="H_CAL_UPPER">
+			<description>H_CAL_UPPER</description>
+			<Statement>
+				<![CDATA[if (H_UPPER-H_LOWER < 0.08):
+	H_CAL_UPPER=roundup(H_UPPER+0.02, 2)
+else:
+	H_CAL_UPPER=roundup((H_UPPER+H_LOWER)/2+0.06, 2)]]>
+			</Statement>
+		</Rule>
+		<Rule name="H_CAL_LOWER">
+			<description>H_CAL_LOWER</description>
+			<Statement>
+				<![CDATA[if (H_CAL_UPPER-0.04 > H_LOWER + 0.06):
+	H_CAL_LOWER=round(H_CAL_UPPER-0.04, 2)
+elif (H_CAL_UPPER - H_LOWER >= 0.07):
+	H_CAL_LOWER=round(H_CAL_UPPER-0.03, 2)
+else:
+	H_CAL_LOWER=H_LOWER+0.03]]>
+			</Statement>
+		</Rule>
+		<Rule name="pickBlank">
+			<description>毛坯选择</description>
+			<Statement>
+				<![CDATA[pickBlankResult =  calIncomeRate(excelName, Quantity, L, W, H)
+L_REAL = pickBlankResult[1][1]
+W_REAL = pickBlankResult[1][2]
+H_REAL = pickBlankResult[1][3]
+blankRatios = str(pickBlankResult[0])]]>
+			</Statement>
+		</Rule>
+		<Rule name="SERVERAL_RULES">
+			<description>SERVERAL_RULES</description>
+			<Statement>
+				<![CDATA[RADIUS_CAL_UPPER=RADIUS_UPPER-0.05
+RADIUS_CAL_LOWER=RADIUS_LOWER+0.05
+DIAGONAL_UPPER = round(sqrt(pow((L+(L_CAL_UPPER+L_CAL_LOWER)/2-2 * (RADIUS+RADIUS_CAL_UPPER)), 2) + pow((W+(W_CAL_UPPER+W_CAL_LOWER)/2-2*(RADIUS+RADIUS_CAL_UPPER)),2)) + 2*(RADIUS+RADIUS_CAL_UPPER), 2)
+DIAGONAL_LOWER = round(sqrt(pow((L+(L_CAL_UPPER+L_CAL_LOWER)/2-2 * (RADIUS+RADIUS_CAL_LOWER)), 2) + pow((W+(W_CAL_UPPER+W_CAL_LOWER)/2-2*(RADIUS+RADIUS_CAL_LOWER)),2)) + 2*(RADIUS+RADIUS_CAL_LOWER), 2)
+L_CUT_TIMES=int((L_REAL-1.4)/(L+0.4))
+W_CUT_TIMES=int((W_REAL-1.4)/(W+0.4))
+H_CUT_TIMES=int((H_REAL-1.3)/(H+0.3))
+L_RECOMMEND=roundup((L+0.4)*L_CUT_TIMES+1.4,1)
+W_RECOMMEND=roundup((W+0.4)*W_CUT_TIMES+1.4,1)
+H_RECOMMEND=roundup((L+0.3)*H_CUT_TIMES+1.3,1)
+OUT_PIECE_COUNT=L_CUT_TIMES*W_CUT_TIMES*H_CUT_TIMES]]>
+			</Statement>
+		</Rule>
+		<Rule name="SETOBJECT">
+			<description>SETOBJECT</description>
+			<Statement>
+				<![CDATA[#设置第一个工序值
+step1.setValue('name1', '1')
+step1.setValue('name2', '切片')
+step1.setValue('name3', '加工车间')
+step1.setValue('name4', CONCATENATE([L_REAL,"切出",L_CUT_TIMES,"片"]))
+step1.setValue('name5', 'J5060C切片机')
+step1.setValue('name6', '直角模型')
+
+#设置第二个工序值
+step2.setValue('name1', '2')
+step2.setValue('name2', '磨片')
+step2.setValue('name3', '加工车间')
+step2.setValue('name4', CONCATENATE(['规格：', L, '  ', tostr(L_CAL_UPPER), '/', tostr(L_CAL_LOWER)]))
+
+#设置第三个工序值
+step3.setValue('name1', '3')
+step3.setValue('name2', '切片')
+step3.setValue('name3', '加工车间')
+step3.setValue('name4', CONCATENATE([W_REAL,"切出",W_CUT_TIMES,"片"]))
+step3.setValue('name5', 'J5060C切片机')
+step3.setValue('name6', '直角模型')
+
+#设置第四个工序值
+step4.setValue('name1', '4')
+step4.setValue('name2', '磨片')
+step4.setValue('name3', '加工车间')
+step4.setValue('name4', CONCATENATE(['规格：', W, '  ', tostr(W_CAL_UPPER), '/', tostr(W_CAL_LOWER)]))
+
+#设置第五个工序值
+step5.setValue('name1', '5')
+step5.setValue('name2', '成型磨')
+step5.setValue('name3', '加工车间')
+step5.setValue('name4', CONCATENATE(["磨R ", RADIUS, "  公差", RADIUS_CAL_UPPER, "/" ,RADIUS_CAL_LOWER, '  ', '磨后对角线:', tostr(DIAGONAL_LOWER), '~', tostr(DIAGONAL_UPPER)]))
+
+#设置第六个工序值
+step6.setValue('name1', '6')
+step6.setValue('name2', '切片')
+step6.setValue('name3', '加工车间')
+step6.setValue('name4', CONCATENATE([H_REAL,"切出",H_CUT_TIMES,"片"]))
+
+#设置第七个工序值
+step7.setValue('name1', '7')
+step7.setValue('name2', '磨片')
+step7.setValue('name3', '加工车间')
+step7.setValue('name4', CONCATENATE(['规格：', H, '  ', tostr(H_CAL_UPPER), '/', tostr(H_CAL_LOWER)]))
+
+#输出参数设置
+L = L
+W = W
+H = H
+R = RADIUS
+页码 = '1'
+页数 = '1'
+备注 = '尺寸'
+备注1 = '涂层'
+其他说明 = '这个是用来测试的'
+涂层种类 = '环保彩锌'
+耐蚀性 = '盐雾48h'
+涂层厚度 = '5-10μm'
+毛坯外形尺寸 = str(L_REAL) + '*' + str(W_REAL) + '*' + str(H_REAL)]]>
+			</Statement>
+		</Rule>
+	</Rules>
+	<ExtendModules/>
+</Knowledge>

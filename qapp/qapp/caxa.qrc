@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/">
+        <file>readMe.txt</file>
+        <file>skin/skin.qss</file>
+        <file>skin/branch-closed.png</file>
+        <file>skin/branch-end.png</file>
+        <file>skin/branch-more.png</file>
+        <file>skin/branch-open.png</file>
+        <file>skin/down-arrow.png</file>
+        <file>skin/gamelist-bg.png</file>
+        <file>skin/main-bg.png</file>
+        <file>skin/ok.png</file>
+        <file>skin/up-arrow.png</file>
+        <file>skin/vline.png</file>
+        <file>function.txt</file>
+        <file>contents.txt</file>
+        <file>syntax.txt</file>
+    </qresource>
+</RCC>
